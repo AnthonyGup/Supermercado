@@ -1,0 +1,4 @@
+C:/Users/antho/Documents/VisualProjects/Supermercado/build/CMakeFiles/supermercado.dir
+C:/Users/antho/Documents/VisualProjects/Supermercado/build/CMakeFiles/supermercado_app.dir
+C:/Users/antho/Documents/VisualProjects/Supermercado/build/CMakeFiles/edit_cache.dir
+C:/Users/antho/Documents/VisualProjects/Supermercado/build/CMakeFiles/rebuild_cache.dir

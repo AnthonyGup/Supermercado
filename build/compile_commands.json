@@ -1,0 +1,38 @@
+[
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\pojo\\Producto.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\pojo\\Producto.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Producto.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/pojo/Producto.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\excepciones\\ProductoNoEncontradoException.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\excepciones\\ProductoNoEncontradoException.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\listas\\Nodo\\NodoList.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\listas\\Nodo\\NodoList.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/estructuras/listas/Nodo/NodoList.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\listas\\normal\\ListaEnlazada.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\listas\\normal\\ListaEnlazada.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/estructuras/listas/normal/ListaEnlazada.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\listas\\ordenada\\ListaOrdenada.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\listas\\ordenada\\ListaOrdenada.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado_app.dir/includes_CXX.rsp -g -std=c++1z -o CMakeFiles\\supermercado_app.dir\\source\\Supermercado.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\Supermercado.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/Supermercado.cpp",
+  "output": "CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj"
+}
+]
