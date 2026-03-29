@@ -44,6 +44,16 @@ void ListaOrdenada::insertar(Product *dato)
         throw ProductoNoEncontradoException("insertar", "dato nulo");
     }
 
+    if (dato->getName().empty())
+    {
+        throw ProductoNoEncontradoException("insertar", "nombre vacio");
+    }
+
+    if (buscarNodo(dato->getName()) != nullptr)
+    {
+        throw ProductoNoEncontradoException("insertar", "ya existe un producto con nombre: " + dato->getName());
+    }
+
     string nombreDato = StringHelper::toLowerCase(dato->getName());
     dato->setName(nombreDato);
 

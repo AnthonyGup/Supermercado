@@ -1,29 +1,108 @@
 #include "ArbolAvl.h"
 #include "helpers/StringHelper.h"
+#include "excepciones/ProductoNoEncontradoException.h"
+#include <algorithm>
 
+/**
+ * Metodo que inserta nuevos productos en el arbol, lo hace recursivamente hasta encontrar el lugar para el producto agregado,
+ * se comprueba luego el fe de cada nodo y si esta desbalanceado se llama a las rotaciones para corregir el desbalanceo,
+ * tambien actualiza el factor de equilibro de cada nodo evaluado.
+ * @param nodo es el nodo que se va a evaluar, si es vacio entonces se crea uno se setea el producto y se devuelve
+ * @param valor es el producto que se quiere insertar
+ * @return el nodo creado si era null y si no, el nodo con sus hijos ya seteados
+ */
 NodoAvl* ArbolAvl::insertarNodoRecursivo(NodoAvl* nodo, Product* valor) {
     if (nodo == nullptr) {
-        return new NodoAvl(valor);
+        NodoAvl* nuevoNodo = new NodoAvl(valor);
+        actualizarFe(nuevoNodo);
+        return nuevoNodo;
     }
 
-    if (!dato1MayorDato2(nodo->getDato()->getName(), valor->getName())) {
+    if (dato1MayorDato2(valor->getName(), nodo->getDato()->getName())) {
         nodo->setDerecho(insertarNodoRecursivo(nodo->getDerecho(), valor));
     } else {
         nodo->setIzquierdo(insertarNodoRecursivo(nodo->getIzquierdo(), valor));
     }
+    actualizarFe(nodo);
+    int fe = nodo->getFe();
+    if(fe > 1 || fe < (-1)) {
+        nodo = evaluarRotacion(nodo);
+    }
     return nodo;
+}
+
+NodoAvl* ArbolAvl::evaluarRotacion(NodoAvl* nodo) {
+    NodoAvl* nodo2 = evaluarDesbalance(nodo);
+    if (nodo2 == nullptr) {
+        return nodo;
+    }
+
+    if(nodo->getFe() > 0) {
+        if (nodo2->getFe() > 0) {
+            //DD hacer rotacion I
+            return rotarI(nodo, nodo2);
+        } else {
+            //DI hacer rotacion ID
+            throw ProductoNoEncontradoException("insertar", "rotacion DI no implementada en AVL");
+        }
+    } else if(nodo->getFe() < (-1)) {
+        if (nodo2->getFe() > 0) {
+            //ID hacer rotacion DI
+            throw ProductoNoEncontradoException("insertar", "rotacion ID no implementada en AVL");
+        } else {
+            //II hacer rotacion D
+            return rotarD(nodo, nodo2);
+        }
+    }
+
+    return nodo;
+}
+
+NodoAvl* ArbolAvl::rotarI(NodoAvl* nodo1, NodoAvl* nodo2) {
+    NodoAvl* temp = nodo2->getIzquierdo();
+
+    nodo2->setIzquierdo(nodo1);
+    nodo1->setDerecho(temp);
+
+    actualizarFe(nodo1);
+    actualizarFe(nodo2);
+
+    return nodo2;
+}
+
+NodoAvl* ArbolAvl::rotarD(NodoAvl* nodo1, NodoAvl* nodo2) {
+    NodoAvl* temp = nodo2->getDerecho();
+
+    nodo2->setDerecho(nodo1);
+    nodo1->setIzquierdo(temp);
+
+    actualizarFe(nodo1);
+    actualizarFe(nodo2);
+
+    return nodo2;
+}
+
+NodoAvl* ArbolAvl::evaluarDesbalance(NodoAvl* nodo) {
+    if(nodo->getFe() > 0) { //cargado a la derecha
+        return nodo->getDerecho();
+    } else if (nodo->getFe() < 0) { // cargado a la izquierda
+        return nodo->getIzquierdo();
+    }
+    return nullptr;
 }
 
 void ArbolAvl::actualizarFe(NodoAvl* nodo) {
     if (nodo != nullptr) {
-        nodo->setFe(obtenerAltura(nodo->getDerecho()) - obtenerAltura(nodo->getIzquierdo()));
+        int alturaIzquierda = obtenerAltura(nodo->getIzquierdo());
+        int alturaDerecha = obtenerAltura(nodo->getDerecho());
+
+        nodo->setAltura(1 + std::max(alturaIzquierda, alturaDerecha));
+        nodo->setFe(alturaDerecha - alturaIzquierda);
     }
 }
 
 int ArbolAvl::obtenerAltura(NodoAvl* nodo) {
-    if (nodo == nullptr) return 0;
-
-    return 1 + max(obtenerAltura(nodo->getIzquierdo()), obtenerAltura(nodo->getDerecho()));
+    return nodo == nullptr ? 0 : nodo->getAltura();
 }
 
 NodoAvl* ArbolAvl::buscarMaximo(NodoAvl* nodo) {
@@ -81,6 +160,19 @@ bool ArbolAvl::dato1MayorDato2(const string& dato1, const string& dato2) const {
 ArbolAvl::ArbolAvl() : raiz(nullptr) {}
 
 void ArbolAvl::insertar(Product* valor) {
+    if (valor == nullptr) {
+        throw ProductoNoEncontradoException("insertar", "dato nulo en AVL");
+    }
+
+    if (valor->getName().empty()) {
+        throw ProductoNoEncontradoException("insertar", "nombre vacio en AVL");
+    }
+
+    string nombreBuscado = valor->getName();
+    if (buscarNodoRecursivo(raiz, nombreBuscado)) {
+        throw ProductoNoEncontradoException("insertar", "ya existe un producto con nombre: " + valor->getName());
+    }
+
     raiz = insertarNodoRecursivo(raiz, valor);
 }
 

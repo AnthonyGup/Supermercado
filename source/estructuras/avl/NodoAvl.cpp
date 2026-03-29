@@ -5,7 +5,8 @@ NodoAvl::NodoAvl(Product *valor)
     this->dato = valor;
     izquierdo = nullptr;
     derecho = nullptr;
-    fe = 1;
+    fe = 0;
+    altura = 1;
 }
 
 NodoAvl::~NodoAvl()
@@ -13,6 +14,11 @@ NodoAvl::~NodoAvl()
     delete this->dato;
     this->izquierdo = nullptr;
     this->derecho = nullptr;
+}
+
+int NodoAvl::getAltura() const
+{
+    return this->altura;
 }
 
 Product *NodoAvl::getDato() const
@@ -53,4 +59,9 @@ void NodoAvl::setIzquierdo(NodoAvl *izquierdo)
 void NodoAvl::setFe(int fe)
 {
     this->fe = fe;
+}
+
+void NodoAvl::setAltura(int altura)
+{
+    this->altura = altura;
 }

@@ -18,6 +18,14 @@ class ArbolAvl {
         NodoAvl* eliminarNodoRecursivo(NodoAvl*, Product* valor);
         bool buscarNodoRecursivo(NodoAvl* nodo, string& valor);
 
+        //AVL
+        NodoAvl* evaluarRotacion(NodoAvl* nodo);
+        NodoAvl* evaluarDesbalance(NodoAvl* nodo);
+        NodoAvl* rotarD(NodoAvl* nodo1, NodoAvl* nodo2);
+        NodoAvl* rotarI(NodoAvl* nodo1, NodoAvl* nodo2);
+        void rotarDI(NodoAvl* nodo1, NodoAvl* nodo2, NodoAvl* nodo3);
+        void rotarID(NodoAvl* nodo1, NodoAvl* nodo2, NodoAvl* nodo3);
+
         bool dato1MayorDato2(const string& dato1, const string& dato2) const;
     public:
         ArbolAvl();
