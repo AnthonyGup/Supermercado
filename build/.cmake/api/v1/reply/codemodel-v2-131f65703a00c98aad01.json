@@ -42,14 +42,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "supermercado::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-supermercado-Debug-6bec3a6dca79cd7b15eb.json",
+					"jsonFile" : "target-supermercado-Debug-1197f13e020e85996bf0.json",
 					"name" : "supermercado",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "supermercado_app::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-supermercado_app-Debug-aa20971a29435d630445.json",
+					"jsonFile" : "target-supermercado_app-Debug-e611793c469a5b3d1b52.json",
 					"name" : "supermercado_app",
 					"projectIndex" : 0
 				}

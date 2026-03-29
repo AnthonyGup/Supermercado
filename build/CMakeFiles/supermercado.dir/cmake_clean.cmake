@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/supermercado.dir/source/estructuras/avl/ArbolAvl.cpp.obj"
+  "CMakeFiles/supermercado.dir/source/estructuras/avl/ArbolAvl.cpp.obj.d"
+  "CMakeFiles/supermercado.dir/source/estructuras/avl/NodoAvl.cpp.obj"
+  "CMakeFiles/supermercado.dir/source/estructuras/avl/NodoAvl.cpp.obj.d"
   "CMakeFiles/supermercado.dir/source/estructuras/listas/Nodo/NodoList.cpp.obj"
   "CMakeFiles/supermercado.dir/source/estructuras/listas/Nodo/NodoList.cpp.obj.d"
   "CMakeFiles/supermercado.dir/source/estructuras/listas/normal/ListaEnlazada.cpp.obj"

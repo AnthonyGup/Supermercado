@@ -1,3 +1,6 @@
+#ifndef NODO_AVL_H
+#define NODO_AVL_H
+
 #include <iostream>
 #include "pojo/Product.h"
 
@@ -28,3 +31,5 @@ class NodoAvl {
         void setAltura(int altura);
 
 };
+
+#endif

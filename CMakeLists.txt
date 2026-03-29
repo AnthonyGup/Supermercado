@@ -10,6 +10,8 @@ add_library(supermercado STATIC
     source/pojo/Producto.cpp
     source/excepciones/ProductoNoEncontradoException.cpp
     source/helpers/StringHelper.cpp
+    source/estructuras/avl/NodoAvl.cpp
+    source/estructuras/avl/ArbolAvl.cpp
     source/estructuras/listas/Nodo/NodoList.cpp
     source/estructuras/listas/normal/ListaEnlazada.cpp
     source/estructuras/listas/ordenada/ListaOrdenada.cpp

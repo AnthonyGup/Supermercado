@@ -37,21 +37,21 @@ NodoAvl* ArbolAvl::evaluarRotacion(NodoAvl* nodo) {
         return nodo;
     }
 
-    if(nodo->getFe() > 0) {
-        if (nodo2->getFe() > 0) {
+    if(nodo->getFe() > 1) {
+        if (nodo2->getFe() >= 0) {
             //DD hacer rotacion I
             return rotarI(nodo, nodo2);
         } else {
-            //DI hacer rotacion ID
-            throw ProductoNoEncontradoException("insertar", "rotacion DI no implementada en AVL");
+            //DI hacer rotacion DI
+            return rotarDI(nodo, nodo2, nodo2->getIzquierdo());
         }
     } else if(nodo->getFe() < (-1)) {
-        if (nodo2->getFe() > 0) {
-            //ID hacer rotacion DI
-            throw ProductoNoEncontradoException("insertar", "rotacion ID no implementada en AVL");
-        } else {
+        if (nodo2->getFe() <= 0) {
             //II hacer rotacion D
             return rotarD(nodo, nodo2);
+        } else {
+            //ID hacer rotacion ID
+            return rotarID(nodo, nodo2, nodo2->getDerecho());
         }
     }
 
@@ -80,6 +80,48 @@ NodoAvl* ArbolAvl::rotarD(NodoAvl* nodo1, NodoAvl* nodo2) {
     actualizarFe(nodo2);
 
     return nodo2;
+}
+
+NodoAvl* ArbolAvl::rotarDI(NodoAvl* nodo1, NodoAvl* nodo2, NodoAvl* nodo3) {
+    if (nodo3 == nullptr) {
+        throw ProductoNoEncontradoException("rotar", "rotacion DI invalida");
+    }
+
+    NodoAvl* temp = nodo3->getIzquierdo();
+    NodoAvl* temp2 = nodo3->getDerecho();
+
+    nodo3->setDerecho(nodo2);
+    nodo3->setIzquierdo(nodo1);   
+
+    nodo1->setDerecho(temp);
+    nodo2->setIzquierdo(temp2);
+
+    actualizarFe(nodo1);
+    actualizarFe(nodo2);
+    actualizarFe(nodo3);
+
+    return nodo3;
+}
+
+NodoAvl* ArbolAvl::rotarID(NodoAvl* nodo1, NodoAvl* nodo2, NodoAvl* nodo3) {
+    if (nodo3 == nullptr) {
+        throw ProductoNoEncontradoException("rotar", "rotacion ID invalida");
+    }
+
+    NodoAvl* temp = nodo3->getIzquierdo();
+    NodoAvl* temp2 = nodo3->getDerecho();
+
+    nodo3->setIzquierdo(nodo2);
+    nodo3->setDerecho(nodo1);
+
+    nodo1->setIzquierdo(temp);
+    nodo2->setDerecho(temp2);
+
+    actualizarFe(nodo1);
+    actualizarFe(nodo2);
+    actualizarFe(nodo3);
+
+    return nodo3;
 }
 
 NodoAvl* ArbolAvl::evaluarDesbalance(NodoAvl* nodo) {
@@ -114,7 +156,9 @@ NodoAvl* ArbolAvl::buscarMaximo(NodoAvl* nodo) {
 }
 
 NodoAvl* ArbolAvl::eliminarNodoRecursivo(NodoAvl* nodo, Product* valor) {
-    if(nodo == nullptr) return nullptr;
+    if (nodo == nullptr) {
+        throw ProductoNoEncontradoException("eliminar", "no existe un producto con nombre: " + valor->getName());
+    }
 
     if (dato1MayorDato2(nodo->getDato()->getName(), valor->getName())) {
         nodo->setIzquierdo(eliminarNodoRecursivo(nodo->getIzquierdo(), valor));
@@ -132,13 +176,28 @@ NodoAvl* ArbolAvl::eliminarNodoRecursivo(NodoAvl* nodo, Product* valor) {
         }
 
         NodoAvl* temp = buscarMaximo(nodo->getIzquierdo());
-        nodo->setDato(temp->getDato());
+        if (temp == nullptr || temp->getDato() == nullptr) {
+            throw ProductoNoEncontradoException("eliminar", "estructura AVL invalida al reemplazar nodo");
+        }
+
+        if (nodo->getDato() == nullptr) {
+            nodo->setDato(new Product());
+        }
+
+        *(nodo->getDato()) = *(temp->getDato());
         nodo->setIzquierdo(eliminarNodoRecursivo(nodo->getIzquierdo(), temp->getDato()));
     }
+
+    actualizarFe(nodo);
+
+    if (nodo->getFe() > 1 || nodo->getFe() < -1) {
+        nodo = evaluarRotacion(nodo);
+    }
+
     return nodo;
 }
 
-bool ArbolAvl::buscarNodoRecursivo(NodoAvl* nodo, string& valor) {
+bool ArbolAvl::buscarNodoRecursivo(NodoAvl* nodo, const string& valor) const {
     if(nodo == nullptr) return false;
 
     if (!dato1MayorDato2(nodo->getDato()->getName(), valor) &&
@@ -159,6 +218,21 @@ bool ArbolAvl::dato1MayorDato2(const string& dato1, const string& dato2) const {
 
 ArbolAvl::ArbolAvl() : raiz(nullptr) {}
 
+ArbolAvl::~ArbolAvl() {
+    liberarRecursivo(raiz);
+    raiz = nullptr;
+}
+
+void ArbolAvl::liberarRecursivo(NodoAvl* nodo) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    liberarRecursivo(nodo->getIzquierdo());
+    liberarRecursivo(nodo->getDerecho());
+    delete nodo;
+}
+
 void ArbolAvl::insertar(Product* valor) {
     if (valor == nullptr) {
         throw ProductoNoEncontradoException("insertar", "dato nulo en AVL");
@@ -168,8 +242,7 @@ void ArbolAvl::insertar(Product* valor) {
         throw ProductoNoEncontradoException("insertar", "nombre vacio en AVL");
     }
 
-    string nombreBuscado = valor->getName();
-    if (buscarNodoRecursivo(raiz, nombreBuscado)) {
+    if (buscar(valor->getName())) {
         throw ProductoNoEncontradoException("insertar", "ya existe un producto con nombre: " + valor->getName());
     }
 
@@ -177,10 +250,22 @@ void ArbolAvl::insertar(Product* valor) {
 }
 
 void ArbolAvl::eliminar(Product* valor) {
+    if (valor == nullptr) {
+        throw ProductoNoEncontradoException("eliminar", "dato nulo en AVL");
+    }
+
+    if (valor->getName().empty()) {
+        throw ProductoNoEncontradoException("eliminar", "nombre vacio en AVL");
+    }
+
     raiz = eliminarNodoRecursivo(raiz, valor);
 }
 
-void ArbolAvl::buscar(string& nombre) {
-    buscarNodoRecursivo(raiz, nombre);
+bool ArbolAvl::buscar(const string& nombre) const {
+    if (nombre.empty()) {
+        return false;
+    }
+
+    return buscarNodoRecursivo(raiz, nombre);
 }
 
