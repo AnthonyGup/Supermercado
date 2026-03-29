@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(supermercado STATIC
     source/pojo/Producto.cpp
     source/excepciones/ProductoNoEncontradoException.cpp
+    source/helpers/StringHelper.cpp
     source/estructuras/listas/Nodo/NodoList.cpp
     source/estructuras/listas/normal/ListaEnlazada.cpp
     source/estructuras/listas/ordenada/ListaOrdenada.cpp

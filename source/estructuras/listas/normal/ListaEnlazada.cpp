@@ -1,4 +1,5 @@
 #include "ListaEnlazada.h"
+#include "helpers/StringHelper.h"
 
 #include <iostream>
 
@@ -56,12 +57,15 @@ void ListaEnlazada::insertar(Product *dato)
 
 void ListaEnlazada::eliminar(const string &nombre)
 {
+	string nombreBuscado = StringHelper::toLowerCase(nombre);
+
 	NodoList *anterior = nullptr;
 	NodoList *actual = this->cabeza;
 
 	while (actual != nullptr)
 	{
-		if (actual->getDato() != nullptr && actual->getDato()->getName() == nombre)
+		if (actual->getDato() != nullptr &&
+			StringHelper::toLowerCase(actual->getDato()->getName()) == nombreBuscado)
 		{
 			desvincularNodo(anterior, actual);
 			delete actual;
@@ -77,10 +81,13 @@ void ListaEnlazada::eliminar(const string &nombre)
 
 NodoList *ListaEnlazada::buscarNodo(const string &nombre)
 {
+	string nombreBuscado = StringHelper::toLowerCase(nombre);
+
 	NodoList *actual = this->cabeza;
 	while (actual != nullptr)
 	{
-		if (actual->getDato() != nullptr && actual->getDato()->getName() == nombre)
+		if (actual->getDato() != nullptr &&
+			StringHelper::toLowerCase(actual->getDato()->getName()) == nombreBuscado)
 		{
 			return actual;
 		}

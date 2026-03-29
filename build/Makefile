@@ -261,6 +261,30 @@ source/excepciones/ProductoNoEncontradoException.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.s
 .PHONY : source/excepciones/ProductoNoEncontradoException.cpp.s
 
+source/helpers/StringHelper.obj: source/helpers/StringHelper.cpp.obj
+.PHONY : source/helpers/StringHelper.obj
+
+# target to build an object file
+source/helpers/StringHelper.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.obj
+.PHONY : source/helpers/StringHelper.cpp.obj
+
+source/helpers/StringHelper.i: source/helpers/StringHelper.cpp.i
+.PHONY : source/helpers/StringHelper.i
+
+# target to preprocess a source file
+source/helpers/StringHelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.i
+.PHONY : source/helpers/StringHelper.cpp.i
+
+source/helpers/StringHelper.s: source/helpers/StringHelper.cpp.s
+.PHONY : source/helpers/StringHelper.s
+
+# target to generate assembly for a file
+source/helpers/StringHelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.s
+.PHONY : source/helpers/StringHelper.cpp.s
+
 source/pojo/Producto.obj: source/pojo/Producto.cpp.obj
 .PHONY : source/pojo/Producto.obj
 
@@ -310,6 +334,9 @@ help:
 	@echo ... source/excepciones/ProductoNoEncontradoException.obj
 	@echo ... source/excepciones/ProductoNoEncontradoException.i
 	@echo ... source/excepciones/ProductoNoEncontradoException.s
+	@echo ... source/helpers/StringHelper.obj
+	@echo ... source/helpers/StringHelper.i
+	@echo ... source/helpers/StringHelper.s
 	@echo ... source/pojo/Producto.obj
 	@echo ... source/pojo/Producto.i
 	@echo ... source/pojo/Producto.s

@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.cpp" "CMakeFiles/supermercado.dir/source/estructuras/listas/normal/ListaEnlazada.cpp.obj" "gcc" "CMakeFiles/supermercado.dir/source/estructuras/listas/normal/ListaEnlazada.cpp.obj.d"
   "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.cpp" "CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj" "gcc" "CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj.d"
   "C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.cpp" "CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.obj" "gcc" "CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.obj.d"
+  "C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/StringHelper.cpp" "CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.obj" "gcc" "CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.obj.d"
   "C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Producto.cpp" "CMakeFiles/supermercado.dir/source/pojo/Producto.cpp.obj" "gcc" "CMakeFiles/supermercado.dir/source/pojo/Producto.cpp.obj.d"
   )
 

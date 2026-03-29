@@ -1,0 +1,30 @@
+#ifndef ARBOL_AVL_H
+#define ARBOL_AVL_H
+
+#include "NodoAvl.h"
+#include "pojo/Product.h"
+#include <string>
+
+using namespace std;
+
+class ArbolAvl {
+    private:
+        NodoAvl* raiz = nullptr;
+
+        NodoAvl* insertarNodoRecursivo(NodoAvl* nodo, Product* valor);
+        void actualizarFe(NodoAvl* nodo);
+        int obtenerAltura(NodoAvl* nodo);
+        NodoAvl* buscarMaximo(NodoAvl* nodo);
+        NodoAvl* eliminarNodoRecursivo(NodoAvl*, Product* valor);
+        bool buscarNodoRecursivo(NodoAvl* nodo, string& valor);
+
+        bool dato1MayorDato2(const string& dato1, const string& dato2) const;
+    public:
+        ArbolAvl();
+        
+        void insertar(Product* valor);
+        void eliminar(Product* valor);
+        void buscar(string& nombre);
+};
+
+#endif

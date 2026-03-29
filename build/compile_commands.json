@@ -13,6 +13,12 @@
 },
 {
   "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\helpers\\StringHelper.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\helpers\\StringHelper.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/StringHelper.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
   "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\listas\\Nodo\\NodoList.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\listas\\Nodo\\NodoList.cpp",
   "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.cpp",
   "output": "CMakeFiles/supermercado.dir/source/estructuras/listas/Nodo/NodoList.cpp.obj"

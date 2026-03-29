@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj.d"
   "CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.obj"
   "CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.obj.d"
+  "CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.obj"
+  "CMakeFiles/supermercado.dir/source/helpers/StringHelper.cpp.obj.d"
   "CMakeFiles/supermercado.dir/source/pojo/Producto.cpp.obj"
   "CMakeFiles/supermercado.dir/source/pojo/Producto.cpp.obj.d"
   "libsupermercado.a"

@@ -1,4 +1,5 @@
 #include "ListaOrdenada.h"
+#include "helpers/StringHelper.h"
 
 #include <iostream>
 
@@ -43,6 +44,9 @@ void ListaOrdenada::insertar(Product *dato)
         throw ProductoNoEncontradoException("insertar", "dato nulo");
     }
 
+    string nombreDato = StringHelper::toLowerCase(dato->getName());
+    dato->setName(nombreDato);
+
     NodoList *nuevoNodo = new NodoList(dato);
 
     if (estaVacia())
@@ -53,7 +57,8 @@ void ListaOrdenada::insertar(Product *dato)
         return;
     }
 
-    if (this->cabeza->getDato() == nullptr || dato->getName() <= this->cabeza->getDato()->getName())
+    if (this->cabeza->getDato() == nullptr ||
+        nombreDato <= StringHelper::toLowerCase(this->cabeza->getDato()->getName()))
     {
         nuevoNodo->setSiguiente(this->cabeza);
         this->cabeza = nuevoNodo;
@@ -64,7 +69,7 @@ void ListaOrdenada::insertar(Product *dato)
     NodoList *actual = this->cabeza;
     while (actual->getSiguiente() != nullptr &&
            actual->getSiguiente()->getDato() != nullptr &&
-           actual->getSiguiente()->getDato()->getName() < dato->getName())
+            StringHelper::toLowerCase(actual->getSiguiente()->getDato()->getName()) < nombreDato)
     {
         actual = actual->getSiguiente();
     }
@@ -94,6 +99,8 @@ void ListaOrdenada::eliminar(const string &nombre)
         throw ProductoNoEncontradoException("eliminar", "nombre vacio");
     }
 
+    string nombreBuscado = StringHelper::toLowerCase(nombre);
+
     NodoList *anterior = nullptr;
     NodoList *actual = this->cabeza;
 
@@ -106,8 +113,8 @@ void ListaOrdenada::eliminar(const string &nombre)
             continue;
         }
 
-        string nombreActual = actual->getDato()->getName();
-        if (nombreActual == nombre)
+        string nombreActual = StringHelper::toLowerCase(actual->getDato()->getName());
+        if (nombreActual == nombreBuscado)
         {
             desvincularNodo(anterior, actual);
             delete actual;
@@ -115,7 +122,7 @@ void ListaOrdenada::eliminar(const string &nombre)
             return;
         }
 
-        if (nombreActual > nombre)
+        if (nombreActual > nombreBuscado)
         {
             break;
         }
@@ -129,6 +136,7 @@ void ListaOrdenada::eliminar(const string &nombre)
 
 NodoList *ListaOrdenada::buscarNodo(const string &nombre)
 {
+    string nombreBuscado = StringHelper::toLowerCase(nombre);
     NodoList *actual = this->cabeza;
 
     while (actual != nullptr)
@@ -139,13 +147,13 @@ NodoList *ListaOrdenada::buscarNodo(const string &nombre)
             continue;
         }
 
-        string nombreActual = actual->getDato()->getName();
-        if (nombreActual == nombre)
+        string nombreActual = StringHelper::toLowerCase(actual->getDato()->getName());
+        if (nombreActual == nombreBuscado)
         {
             return actual;
         }
 
-        if (nombreActual > nombre)
+        if (nombreActual > nombreBuscado)
         {
             return nullptr;
         }
