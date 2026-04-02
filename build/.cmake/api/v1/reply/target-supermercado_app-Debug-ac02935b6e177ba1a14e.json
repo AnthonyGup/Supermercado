@@ -28,13 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 22,
+				"line" : 24,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 26,
+				"line" : 28,
 				"parent" : 0
 			}
 		]
@@ -69,6 +69,10 @@
 				{
 					"backtrace" : 2,
 					"path" : "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras"
 				}
 			],
 			"language" : "CXX",

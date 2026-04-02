@@ -17,6 +17,8 @@ add_library(supermercado STATIC
     source/estructuras/listas/ordenada/ListaOrdenada.cpp
     source/estructuras/b/NodoB.cpp
     source/estructuras/b/ArbolB.cpp
+    source/estructuras/bplus/NodoBPlus.cpp
+    source/estructuras/bplus/ArbolBPlus.cpp
 )
 
 add_executable(supermercado_app
@@ -28,6 +30,7 @@ target_link_libraries(supermercado_app PRIVATE supermercado)
 target_include_directories(supermercado PUBLIC
     source
     source/estructuras/listas
+    source/estructuras
 )
 
 if(MSVC)
