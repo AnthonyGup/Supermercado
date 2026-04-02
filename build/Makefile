@@ -213,6 +213,54 @@ source/estructuras/avl/NodoAvl.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/avl/NodoAvl.cpp.s
 .PHONY : source/estructuras/avl/NodoAvl.cpp.s
 
+source/estructuras/b/ArbolB.obj: source/estructuras/b/ArbolB.cpp.obj
+.PHONY : source/estructuras/b/ArbolB.obj
+
+# target to build an object file
+source/estructuras/b/ArbolB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj
+.PHONY : source/estructuras/b/ArbolB.cpp.obj
+
+source/estructuras/b/ArbolB.i: source/estructuras/b/ArbolB.cpp.i
+.PHONY : source/estructuras/b/ArbolB.i
+
+# target to preprocess a source file
+source/estructuras/b/ArbolB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.i
+.PHONY : source/estructuras/b/ArbolB.cpp.i
+
+source/estructuras/b/ArbolB.s: source/estructuras/b/ArbolB.cpp.s
+.PHONY : source/estructuras/b/ArbolB.s
+
+# target to generate assembly for a file
+source/estructuras/b/ArbolB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.s
+.PHONY : source/estructuras/b/ArbolB.cpp.s
+
+source/estructuras/b/NodoB.obj: source/estructuras/b/NodoB.cpp.obj
+.PHONY : source/estructuras/b/NodoB.obj
+
+# target to build an object file
+source/estructuras/b/NodoB.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj
+.PHONY : source/estructuras/b/NodoB.cpp.obj
+
+source/estructuras/b/NodoB.i: source/estructuras/b/NodoB.cpp.i
+.PHONY : source/estructuras/b/NodoB.i
+
+# target to preprocess a source file
+source/estructuras/b/NodoB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.i
+.PHONY : source/estructuras/b/NodoB.cpp.i
+
+source/estructuras/b/NodoB.s: source/estructuras/b/NodoB.cpp.s
+.PHONY : source/estructuras/b/NodoB.s
+
+# target to generate assembly for a file
+source/estructuras/b/NodoB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.s
+.PHONY : source/estructuras/b/NodoB.cpp.s
+
 source/estructuras/listas/Nodo/NodoList.obj: source/estructuras/listas/Nodo/NodoList.cpp.obj
 .PHONY : source/estructuras/listas/Nodo/NodoList.obj
 
@@ -376,6 +424,12 @@ help:
 	@echo ... source/estructuras/avl/NodoAvl.obj
 	@echo ... source/estructuras/avl/NodoAvl.i
 	@echo ... source/estructuras/avl/NodoAvl.s
+	@echo ... source/estructuras/b/ArbolB.obj
+	@echo ... source/estructuras/b/ArbolB.i
+	@echo ... source/estructuras/b/ArbolB.s
+	@echo ... source/estructuras/b/NodoB.obj
+	@echo ... source/estructuras/b/NodoB.i
+	@echo ... source/estructuras/b/NodoB.s
 	@echo ... source/estructuras/listas/Nodo/NodoList.obj
 	@echo ... source/estructuras/listas/Nodo/NodoList.i
 	@echo ... source/estructuras/listas/Nodo/NodoList.s

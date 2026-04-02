@@ -49,6 +49,18 @@
 },
 {
   "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\b\\NodoB.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\b\\NodoB.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\b\\ArbolB.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\b\\ArbolB.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
   "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado_app.dir/includes_CXX.rsp -g -std=c++1z -o CMakeFiles\\supermercado_app.dir\\source\\Supermercado.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\Supermercado.cpp",
   "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/Supermercado.cpp",
   "output": "CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj"

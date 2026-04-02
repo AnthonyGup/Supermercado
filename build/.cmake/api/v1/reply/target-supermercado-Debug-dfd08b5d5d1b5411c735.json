@@ -33,13 +33,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 34,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 26,
+				"line" : 28,
 				"parent" : 0
 			}
 		]
@@ -95,7 +95,9 @@
 				4,
 				5,
 				6,
-				7
+				7,
+				8,
+				9
 			]
 		}
 	],
@@ -120,7 +122,9 @@
 				4,
 				5,
 				6,
-				7
+				7,
+				8,
+				9
 			]
 		}
 	],
@@ -172,6 +176,18 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "source/estructuras/listas/ordenada/ListaOrdenada.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/estructuras/b/NodoB.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "source/estructuras/b/ArbolB.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

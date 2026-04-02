@@ -191,6 +191,36 @@ CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\listas\ordenada\ListaOrdenada.cpp -o CMakeFiles\supermercado.dir\source\estructuras\listas\ordenada\ListaOrdenada.cpp.s
 
+CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj: CMakeFiles/supermercado.dir/flags.make
+CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj: CMakeFiles/supermercado.dir/includes_CXX.rsp
+CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj: C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.cpp
+CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj: CMakeFiles/supermercado.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\antho\Documents\VisualProjects\Supermercado\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj -MF CMakeFiles\supermercado.dir\source\estructuras\b\NodoB.cpp.obj.d -o CMakeFiles\supermercado.dir\source\estructuras\b\NodoB.cpp.obj -c C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\b\NodoB.cpp
+
+CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\b\NodoB.cpp > CMakeFiles\supermercado.dir\source\estructuras\b\NodoB.cpp.i
+
+CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\b\NodoB.cpp -o CMakeFiles\supermercado.dir\source\estructuras\b\NodoB.cpp.s
+
+CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: CMakeFiles/supermercado.dir/flags.make
+CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: CMakeFiles/supermercado.dir/includes_CXX.rsp
+CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.cpp
+CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: CMakeFiles/supermercado.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\antho\Documents\VisualProjects\Supermercado\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj -MF CMakeFiles\supermercado.dir\source\estructuras\b\ArbolB.cpp.obj.d -o CMakeFiles\supermercado.dir\source\estructuras\b\ArbolB.cpp.obj -c C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\b\ArbolB.cpp
+
+CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\b\ArbolB.cpp > CMakeFiles\supermercado.dir\source\estructuras\b\ArbolB.cpp.i
+
+CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras\b\ArbolB.cpp -o CMakeFiles\supermercado.dir\source\estructuras\b\ArbolB.cpp.s
+
 # Object files for target supermercado
 supermercado_OBJECTS = \
 "CMakeFiles/supermercado.dir/source/pojo/Producto.cpp.obj" \
@@ -200,7 +230,9 @@ supermercado_OBJECTS = \
 "CMakeFiles/supermercado.dir/source/estructuras/avl/ArbolAvl.cpp.obj" \
 "CMakeFiles/supermercado.dir/source/estructuras/listas/Nodo/NodoList.cpp.obj" \
 "CMakeFiles/supermercado.dir/source/estructuras/listas/normal/ListaEnlazada.cpp.obj" \
-"CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj"
+"CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj" \
+"CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj" \
+"CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj"
 
 # External object files for target supermercado
 supermercado_EXTERNAL_OBJECTS =
@@ -213,9 +245,11 @@ libsupermercado.a: CMakeFiles/supermercado.dir/source/estructuras/avl/ArbolAvl.c
 libsupermercado.a: CMakeFiles/supermercado.dir/source/estructuras/listas/Nodo/NodoList.cpp.obj
 libsupermercado.a: CMakeFiles/supermercado.dir/source/estructuras/listas/normal/ListaEnlazada.cpp.obj
 libsupermercado.a: CMakeFiles/supermercado.dir/source/estructuras/listas/ordenada/ListaOrdenada.cpp.obj
+libsupermercado.a: CMakeFiles/supermercado.dir/source/estructuras/b/NodoB.cpp.obj
+libsupermercado.a: CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj
 libsupermercado.a: CMakeFiles/supermercado.dir/build.make
 libsupermercado.a: CMakeFiles/supermercado.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\antho\Documents\VisualProjects\Supermercado\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libsupermercado.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\antho\Documents\VisualProjects\Supermercado\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libsupermercado.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\supermercado.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\supermercado.dir\link.txt --verbose=$(VERBOSE)
 
