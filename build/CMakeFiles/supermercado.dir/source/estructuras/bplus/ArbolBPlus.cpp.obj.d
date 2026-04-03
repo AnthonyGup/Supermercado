@@ -80,6 +80,7 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\stdexcept \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios \
@@ -88,7 +89,6 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\system_error \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\error_constants.h \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\stdexcept \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\streambuf \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\streambuf.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_ios.h \
@@ -102,4 +102,6 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_ios.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\istream \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\istream.tcc
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\istream.tcc \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\sstream \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\sstream.tcc

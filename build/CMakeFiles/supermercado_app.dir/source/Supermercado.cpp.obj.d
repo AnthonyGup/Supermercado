@@ -97,12 +97,64 @@ CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\istream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\istream.tcc \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\limits \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\vector \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_construct.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_uninitialized.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_vector.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_bvector.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\vector.tcc \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\helpers/CSVLoader.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\set \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_tree.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ext\aligned_buffer.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_set.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multiset.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\pojo\product.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/avl/ArbolAvl.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/avl/NodoAvl.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\sstream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\sstream.tcc \
- C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/listas/normal/ListaEnlazada.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\fstream \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\codecvt.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\basic_file.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\c++io.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\fstream.tcc \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\memory \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_tempbuf.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_raw_storage_iter.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\typeinfo \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ext\concurrence.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\uses_allocator.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\functional \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\tuple \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\utility \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_relops.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\array \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\unique_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\shared_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\shared_ptr_base.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\allocated_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\shared_ptr_atomic.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\atomic_base.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\backward\auto_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\map \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_map.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multimap.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/b/ArbolB.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/b/NodoB.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/bplus/ArbolBPlus.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/bplus/NodoBPlus.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h \
- C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.h \
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/listas/normal/ListaEnlazada.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/listas/ordenada/ListaOrdenada.h \
- C:\Users\antho\Documents\VisualProjects\Supermercado\source\excepciones/ProductoNoEncontradoException.h
+ C:\Users\antho\Documents\VisualProjects\Supermercado\source\frontend/Frontend.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\pojo\product.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\estructuras\avl\arbolavl.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\estructuras\b\arbolb.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\estructuras\bplus\arbolbplus.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\normal\listaenlazada.h \
+ c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\ordenada\listaordenada.h

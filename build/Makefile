@@ -405,6 +405,54 @@ source/excepciones/ProductoNoEncontradoException.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.s
 .PHONY : source/excepciones/ProductoNoEncontradoException.cpp.s
 
+source/frontend/Frontend.obj: source/frontend/Frontend.cpp.obj
+.PHONY : source/frontend/Frontend.obj
+
+# target to build an object file
+source/frontend/Frontend.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj
+.PHONY : source/frontend/Frontend.cpp.obj
+
+source/frontend/Frontend.i: source/frontend/Frontend.cpp.i
+.PHONY : source/frontend/Frontend.i
+
+# target to preprocess a source file
+source/frontend/Frontend.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.i
+.PHONY : source/frontend/Frontend.cpp.i
+
+source/frontend/Frontend.s: source/frontend/Frontend.cpp.s
+.PHONY : source/frontend/Frontend.s
+
+# target to generate assembly for a file
+source/frontend/Frontend.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.s
+.PHONY : source/frontend/Frontend.cpp.s
+
+source/helpers/CSVLoader.obj: source/helpers/CSVLoader.cpp.obj
+.PHONY : source/helpers/CSVLoader.obj
+
+# target to build an object file
+source/helpers/CSVLoader.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/helpers/CSVLoader.cpp.obj
+.PHONY : source/helpers/CSVLoader.cpp.obj
+
+source/helpers/CSVLoader.i: source/helpers/CSVLoader.cpp.i
+.PHONY : source/helpers/CSVLoader.i
+
+# target to preprocess a source file
+source/helpers/CSVLoader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/helpers/CSVLoader.cpp.i
+.PHONY : source/helpers/CSVLoader.cpp.i
+
+source/helpers/CSVLoader.s: source/helpers/CSVLoader.cpp.s
+.PHONY : source/helpers/CSVLoader.s
+
+# target to generate assembly for a file
+source/helpers/CSVLoader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\supermercado.dir\build.make CMakeFiles/supermercado.dir/source/helpers/CSVLoader.cpp.s
+.PHONY : source/helpers/CSVLoader.cpp.s
+
 source/helpers/StringHelper.obj: source/helpers/StringHelper.cpp.obj
 .PHONY : source/helpers/StringHelper.obj
 
@@ -496,6 +544,12 @@ help:
 	@echo ... source/excepciones/ProductoNoEncontradoException.obj
 	@echo ... source/excepciones/ProductoNoEncontradoException.i
 	@echo ... source/excepciones/ProductoNoEncontradoException.s
+	@echo ... source/frontend/Frontend.obj
+	@echo ... source/frontend/Frontend.i
+	@echo ... source/frontend/Frontend.s
+	@echo ... source/helpers/CSVLoader.obj
+	@echo ... source/helpers/CSVLoader.i
+	@echo ... source/helpers/CSVLoader.s
 	@echo ... source/helpers/StringHelper.obj
 	@echo ... source/helpers/StringHelper.i
 	@echo ... source/helpers/StringHelper.s

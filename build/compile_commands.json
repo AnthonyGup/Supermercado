@@ -19,6 +19,12 @@
 },
 {
   "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\helpers\\CSVLoader.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\helpers\\CSVLoader.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/helpers/CSVLoader.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
   "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\estructuras\\avl\\NodoAvl.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\estructuras\\avl\\NodoAvl.cpp",
   "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/NodoAvl.cpp",
   "output": "CMakeFiles/supermercado.dir/source/estructuras/avl/NodoAvl.cpp.obj"
@@ -73,7 +79,13 @@
 },
 {
   "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
-  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado_app.dir/includes_CXX.rsp -g -std=c++1z -o CMakeFiles\\supermercado_app.dir\\source\\Supermercado.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\Supermercado.cpp",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado.dir\\source\\frontend\\Frontend.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\frontend\\Frontend.cpp",
+  "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/frontend/Frontend.cpp",
+  "output": "CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj"
+},
+{
+  "directory": "C:/Users/antho/Documents/VisualProjects/Supermercado/build",
+  "command": "C:\\MinGW\\bin\\g++.exe  @CMakeFiles/supermercado_app.dir/includes_CXX.rsp -g -std=c++1z -Wall -Wextra -o CMakeFiles\\supermercado_app.dir\\source\\Supermercado.cpp.obj -c C:\\Users\\antho\\Documents\\VisualProjects\\Supermercado\\source\\Supermercado.cpp",
   "file": "C:/Users/antho/Documents/VisualProjects/Supermercado/source/Supermercado.cpp",
   "output": "CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj"
 }

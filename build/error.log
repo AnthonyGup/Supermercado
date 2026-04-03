@@ -1,0 +1,14 @@
+=== Log de Errores - CSVLoader ===
+Inicio de carga: 2026-04-03 02:25:04
+====================================
+
+
+=== RESUMEN DE CARGA ===
+Total de líneas procesadas: 1200
+Productos cargados exitosamente: 1200
+Errores de formato de línea: 0
+Códigos de barra duplicados: 0
+Errores de fecha: 0
+Errores de números: 0
+Otros errores: 0
+Total de errores: 0

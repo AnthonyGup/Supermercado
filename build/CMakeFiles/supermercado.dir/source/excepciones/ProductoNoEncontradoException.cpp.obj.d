@@ -1,6 +1,7 @@
 CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp.obj: \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\excepciones\ProductoNoEncontradoException.cpp \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\excepciones\ProductoNoEncontradoException.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\stdexcept \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\exception \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\c++config.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\os_defines.h \
