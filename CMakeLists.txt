@@ -10,6 +10,7 @@ add_library(supermercado STATIC
     source/pojo/Producto.cpp
     source/excepciones/ProductoNoEncontradoException.cpp
     source/helpers/StringHelper.cpp
+    source/helpers/CSVLoader.cpp
     source/estructuras/avl/NodoAvl.cpp
     source/estructuras/avl/ArbolAvl.cpp
     source/estructuras/listas/Nodo/NodoList.cpp
@@ -19,6 +20,7 @@ add_library(supermercado STATIC
     source/estructuras/b/ArbolB.cpp
     source/estructuras/bplus/NodoBPlus.cpp
     source/estructuras/bplus/ArbolBPlus.cpp
+    source/frontend/Frontend.cpp
 )
 
 add_executable(supermercado_app
@@ -31,10 +33,20 @@ target_include_directories(supermercado PUBLIC
     source
     source/estructuras/listas
     source/estructuras
+    source/helpers
+)
+
+target_include_directories(supermercado_app PRIVATE
+    source
+    source/estructuras/listas
+    source/estructuras
+    source/helpers
 )
 
 if(MSVC)
     target_compile_options(supermercado PRIVATE /W4)
+    target_compile_options(supermercado_app PRIVATE /W4)
 else()
     target_compile_options(supermercado PRIVATE -Wall -Wextra)
+    target_compile_options(supermercado_app PRIVATE -Wall -Wextra)
 endif()

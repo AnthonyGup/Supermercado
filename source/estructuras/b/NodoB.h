@@ -15,6 +15,7 @@ class NodoB {
 
     private:
         int m;
+        int dotId;  // ID temporal para generación DOT
 
     public:
         NodoB(int orden);
@@ -36,6 +37,10 @@ class NodoB {
         
         // cambiar el valor de cuenta
         void Pcuenta(int valor);
+
+        // Métodos para manejo de IDs temporales (DOT)
+        int OdotId() const;
+        void PdotId(int id);
 };
 
 #endif

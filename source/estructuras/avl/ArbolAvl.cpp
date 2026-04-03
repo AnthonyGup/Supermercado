@@ -269,3 +269,126 @@ bool ArbolAvl::buscar(const string& nombre) const {
     return buscarNodoRecursivo(raiz, nombre);
 }
 
+Product* ArbolAvl::obtenerProducto(const string& nombre) const {
+    if (nombre.empty()) {
+        return nullptr;
+    }
+
+    NodoAvl* nodo = raiz;
+    while (nodo != nullptr) {
+        if (!dato1MayorDato2(nodo->getDato()->getName(), nombre) &&
+            !dato1MayorDato2(nombre, nodo->getDato()->getName())) {
+            return nodo->getDato();
+        }
+
+        if (dato1MayorDato2(nodo->getDato()->getName(), nombre)) {
+            nodo = nodo->getIzquierdo();
+        } else {
+            nodo = nodo->getDerecho();
+        }
+    }
+
+    return nullptr;
+}
+
+// =============== MÉTODOS DE GENERACIÓN DOT ===============
+
+bool ArbolAvl::generarDot(const string& filepath) {
+    try {
+        DotGenerator gen("arbol_avl", "Árbol AVL de Productos (por Nombre)");
+        
+        if (raiz == nullptr) {
+            gen.addNode("empty", "Árbol Vacío", "ellipse", "lightgray");
+        } else {
+            // Paso 1: Asignar IDs secuenciales a todos los nodos
+            int contador = 0;
+            map<NodoAvl*, int> mapIds;
+            asignarIdsRecursivo(raiz, contador, mapIds);
+            
+            // Paso 2: Agregar todos los nodos al generador
+            agregarNodosAlGenerador(raiz, gen, mapIds);
+            
+            // Paso 3: Agregar todas las aristas
+            agregarAristasAlGenerador(raiz, gen, mapIds);
+        }
+        
+        return gen.saveToDot(filepath);
+    } catch (const exception& e) {
+        cerr << "Error al generar DOT del Árbol AVL: " << e.what() << endl;
+        return false;
+    }
+}
+
+// Paso 1: Asignar IDs únicos y correlativos a cada nodo
+void ArbolAvl::asignarIdsRecursivo(NodoAvl* nodo, int& contador, map<NodoAvl*, int>& mapIds) {
+    if (nodo == nullptr) {
+        return;
+    }
+    
+    // Pre-order: asignar ID primero
+    contador++;
+    mapIds[nodo] = contador;
+    
+    // Luego procesar izquierda y derecha
+    asignarIdsRecursivo(nodo->getIzquierdo(), contador, mapIds);
+    asignarIdsRecursivo(nodo->getDerecho(), contador, mapIds);
+}
+
+// Paso 2: Agregar todos los nodos definidos correctamente
+void ArbolAvl::agregarNodosAlGenerador(NodoAvl* nodo, DotGenerator& gen, const map<NodoAvl*, int>& mapIds) {
+    if (nodo == nullptr) {
+        return;
+    }
+    
+    // Obtener el ID de este nodo
+    int nodeId = mapIds.at(nodo);
+    string id = "node_" + to_string(nodeId);
+    
+    // Crear etiqueta clara y estructurada
+    stringstream label;
+    label << nodo->getDato()->getName() << "\n";
+    label << "$" << static_cast<int>(nodo->getDato()->getPrice()) << "\n";
+    label << "FE: " << nodo->getFe();
+    
+    // Determinar color según balance factor
+    string color = "lightblue";
+    if (nodo->getFe() > 1 || nodo->getFe() < -1) {
+        color = "lightcoral";  // Desbalanceado crítico
+    } else if (nodo->getFe() != 0) {
+        color = "lightyellow"; // Ligeramente desbalanceado
+    }
+    
+    gen.addNode(id, label.str(), "box", color);
+    
+    // Recursivamente agregar nodos hijos
+    agregarNodosAlGenerador(nodo->getIzquierdo(), gen, mapIds);
+    agregarNodosAlGenerador(nodo->getDerecho(), gen, mapIds);
+}
+
+// Paso 3: Agregar todas las aristas
+void ArbolAvl::agregarAristasAlGenerador(NodoAvl* nodo, DotGenerator& gen, const map<NodoAvl*, int>& mapIds) {
+    if (nodo == nullptr) {
+        return;
+    }
+    
+    // Obtener ID del padre
+    int parentId = mapIds.at(nodo);
+    string parentStr = "node_" + to_string(parentId);
+    
+    // Agregar arista al hijo izquierdo
+    if (nodo->getIzquierdo() != nullptr) {
+        int leftId = mapIds.at(nodo->getIzquierdo());
+        string leftStr = "node_" + to_string(leftId);
+        gen.addEdge(parentStr, leftStr, "←");
+        agregarAristasAlGenerador(nodo->getIzquierdo(), gen, mapIds);
+    }
+    
+    // Agregar arista al hijo derecho
+    if (nodo->getDerecho() != nullptr) {
+        int rightId = mapIds.at(nodo->getDerecho());
+        string rightStr = "node_" + to_string(rightId);
+        gen.addEdge(parentStr, rightStr, "→");
+        agregarAristasAlGenerador(nodo->getDerecho(), gen, mapIds);
+    }
+}
+

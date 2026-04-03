@@ -197,8 +197,11 @@ void ArbolBPlus::eliminar(PPagina nodo, const string& categoria) {
         i++;
     }
 
+    bool encontrado = (i < nodo->Ocuenta() && categoria == nodo->Oclave(i));
+
     if (nodo->esHoja()) {
-        if (i < nodo->Ocuenta() && categoria == nodo->Oclave(i)) {
+        // Si es hoja y encontramos la clave
+        if (encontrado) {
             // Eliminar la clave y su valor
             if (nodo->Ovalor(i)) delete nodo->Ovalor(i);
 
@@ -209,31 +212,150 @@ void ArbolBPlus::eliminar(PPagina nodo, const string& categoria) {
             nodo->Pcuenta(nodo->Ocuenta() - 1);
         }
     } else {
-        bool encontrado = (i < nodo->Ocuenta() && categoria == nodo->Oclave(i));
+        // Nodo interno
+        if (encontrado) {
+            // Clave existe en nodo interno - no hacemos nada
+            // (en B+ solo se usan como navegacion)
+        } else {
+            // Buscar en el hijo apropiado
+            bool es_ultimo = (i == nodo->Ocuenta());
 
-        if (encontrado && i < nodo->Ocuenta()) {
-            // Código de eliminación de nodo interno
-            eliminar(nodo->Orama(i + 1), categoria);
-        } else if (i < nodo->Ocuenta()) {
-            eliminar(nodo->Orama(i), categoria);
+            // Asegurar que el hijo tenga suficientes claves antes de descender
+            if (nodo->Orama(i) && nodo->Orama(i)->Ocuenta() < (orden / 2)) {
+                llenarNodo(nodo, i);
+            }
+
+            // Después de llenarNodo, la posición podría haber cambiado
+            if (es_ultimo && i > nodo->Ocuenta()) {
+                eliminar(nodo->Orama(i - 1), categoria);
+            } else {
+                eliminar(nodo->Orama(i), categoria);
+            }
         }
     }
 }
 
 void ArbolBPlus::llenarNodo(PPagina nodo, int pos) {
-    // Implementar préstamo o fusión
-}
-
-void ArbolBPlus::fusionarNodos(PPagina nodo, int pos) {
-    // Implementar fusión de nodos
+    // Si el hermano anterior tiene suficientes claves, tomar prestado
+    if (pos != 0 && nodo->Orama(pos - 1) && nodo->Orama(pos - 1)->Ocuenta() >= orden / 2) {
+        tomarDelAnterior(nodo, pos);
+    }
+    // Si el hermano siguiente tiene suficientes claves, tomar prestado
+    else if (pos != nodo->Ocuenta() && nodo->Orama(pos + 1) && 
+             nodo->Orama(pos + 1)->Ocuenta() >= orden / 2) {
+        tomarDelSiguiente(nodo, pos);
+    }
+    // Si ambos hermanos tienen el mínimo, fusionar con uno de ellos
+    else if (pos != 0) {
+        fusionarNodos(nodo, pos);
+    } else if (pos != nodo->Ocuenta()) {
+        fusionarNodos(nodo, pos + 1);
+    }
 }
 
 void ArbolBPlus::tomarDelAnterior(PPagina nodo, int pos) {
-    // Implementar préstamo del nodo anterior
+    PPagina hijo = nodo->Orama(pos);
+    PPagina hermanoAnterior = nodo->Orama(pos - 1);
+
+    // Desplazar las claves del hijo a la derecha
+    for (int i = hijo->Ocuenta() - 1; i >= 0; i--) {
+        hijo->Pclave(i + 1, hijo->Oclave(i));
+        if (hijo->esHoja()) {
+            hijo->Pvalor(i + 1, hijo->Ovalor(i));
+        } else {
+            hijo->Prama(i + 1, hijo->Orama(i));
+        }
+    }
+
+    // Si no es hoja, mover la rama izquierda
+    if (!hijo->esHoja()) {
+        hijo->Prama(0, hermanoAnterior->Orama(hermanoAnterior->Ocuenta()));
+    }
+
+    // Mover clave del padre al hijo
+    hijo->Pclave(0, nodo->Oclave(pos - 1));
+    if (hijo->esHoja()) {
+        hijo->Pvalor(0, nullptr);
+    }
+
+    // Mover clave del hermano al padre
+    nodo->Pclave(pos - 1, hermanoAnterior->Oclave(hermanoAnterior->Ocuenta() - 1));
+
+    hijo->Pcuenta(hijo->Ocuenta() + 1);
+    hermanoAnterior->Pcuenta(hermanoAnterior->Ocuenta() - 1);
 }
 
 void ArbolBPlus::tomarDelSiguiente(PPagina nodo, int pos) {
-    // Implementar préstamo del nodo siguiente
+    PPagina hijo = nodo->Orama(pos);
+    PPagina hermanoSiguiente = nodo->Orama(pos + 1);
+
+    // Mover clave del padre al hijo
+    hijo->Pclave(hijo->Ocuenta(), nodo->Oclave(pos));
+    if (hijo->esHoja()) {
+        hijo->Pvalor(hijo->Ocuenta(), nullptr);
+    }
+
+    // Si no es hoja, mover rama del hermano
+    if (!hijo->esHoja()) {
+        hijo->Prama(hijo->Ocuenta() + 1, hermanoSiguiente->Orama(0));
+    }
+
+    // Mover clave del hermano al padre
+    nodo->Pclave(pos, hermanoSiguiente->Oclave(0));
+
+    // Desplazar claves del hermano a la izquierda
+    for (int i = 0; i < hermanoSiguiente->Ocuenta() - 1; i++) {
+        hermanoSiguiente->Pclave(i, hermanoSiguiente->Oclave(i + 1));
+        if (hermanoSiguiente->esHoja()) {
+            hermanoSiguiente->Pvalor(i, hermanoSiguiente->Ovalor(i + 1));
+        } else {
+            hermanoSiguiente->Prama(i, hermanoSiguiente->Orama(i + 1));
+        }
+    }
+
+    // Desplazar última rama si no es hoja
+    if (!hermanoSiguiente->esHoja()) {
+        hermanoSiguiente->Prama(hermanoSiguiente->Ocuenta() - 1, 
+                                hermanoSiguiente->Orama(hermanoSiguiente->Ocuenta()));
+    }
+
+    hijo->Pcuenta(hijo->Ocuenta() + 1);
+    hermanoSiguiente->Pcuenta(hermanoSiguiente->Ocuenta() - 1);
+}
+
+void ArbolBPlus::fusionarNodos(PPagina nodo, int pos) {
+    PPagina hijo = nodo->Orama(pos - 1);
+    PPagina hermano = nodo->Orama(pos);
+
+    // Mover clave del padre al hijo
+    hijo->Pclave(hijo->Ocuenta(), nodo->Oclave(pos - 1));
+
+    // Copiar todas las claves y valores del hermano al hijo
+    for (int i = 0; i < hermano->Ocuenta(); i++) {
+        hijo->Pclave(hijo->Ocuenta() + 1, hermano->Oclave(i));
+        if (hermano->esHoja()) {
+            hijo->Pvalor(hijo->Ocuenta(), hermano->Ovalor(i));
+        } else {
+            hijo->Prama(hijo->Ocuenta(), hermano->Orama(i));
+        }
+    }
+
+    // Si no es hoja, copiar última rama
+    if (!hermano->esHoja()) {
+        hijo->Prama(hijo->Ocuenta() + hermano->Ocuenta(), hermano->Orama(hermano->Ocuenta()));
+    }
+
+    hijo->Pcuenta(hijo->Ocuenta() + hermano->Ocuenta() + 1);
+
+    // Desplazar claves y ramas del padre
+    for (int i = pos - 1; i < nodo->Ocuenta() - 1; i++) {
+        nodo->Pclave(i, nodo->Oclave(i + 1));
+        nodo->Prama(i, nodo->Orama(i + 1));
+    }
+    nodo->Prama(nodo->Ocuenta() - 1, nodo->Orama(nodo->Ocuenta()));
+
+    nodo->Pcuenta(nodo->Ocuenta() - 1);
+    delete hermano;
 }
 
 int ArbolBPlus::buscarIndice(PPagina nodo, const string& categoria) const {
@@ -302,3 +424,7 @@ void ArbolBPlus::listarCategoria(const string& categoria) {
         cout << "No hay productos en la categoría: " << categoria << endl;
     }
 }
+
+// =============== MÉTODOS DE GENERACIÓN DOT ===============
+
+

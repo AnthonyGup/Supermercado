@@ -5,6 +5,7 @@
 #include "listas/normal/ListaEnlazada.h"
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -68,7 +69,6 @@ class ArbolBPlus {
         // Métodos auxiliares
         int buscarIndice(PPagina nodo, const string& categoria) const;
         void mostrarArbol(PPagina nodo, int profundidad);
-        void crearListasVacias(PPagina nodo);
 };
 
 #endif

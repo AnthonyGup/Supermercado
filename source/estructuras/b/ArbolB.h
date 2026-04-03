@@ -3,7 +3,9 @@
 
 #include "NodoB.h"
 #include <string>
-#include "iostream"
+#include <iostream>
+#include <sstream>
+#include <map>
 
 using namespace std;
 
@@ -36,15 +38,15 @@ class ArbolB {
 
 		bool buscarNodo(NodoB* actual, Product* producto, int& k);
 		bool empujar(NodoB* actual, Product* producto, Product*& productoMediana, NodoB*& nuevo);
-		void escribir();
 		void listarCreciente();
 
 	private:
+		
+		// Metodos de la clase
 		Product* buscar(NodoB* actual, const string& clave, int& n);
 		NodoB* insertar(NodoB* raiz, Product* producto);
 		void meterPagina(NodoB* actual, Product* producto, NodoB* ramaDr, int k);
 		void dividirNodo(NodoB* actual, Product*& mediana, NodoB*& nuevo, int pos);
-		void escribir(NodoB* r, int h);
 		void inOrder(NodoB* r);
 		NodoB* eliminar(NodoB* nodo, const string& clave);
 		void llenarNodo(NodoB* nodo, int k);

@@ -2,7 +2,7 @@
 #include <cstring>
 #include <iostream>
 
-NodoBPlus::NodoBPlus(int orden, bool hoja) : isHoja(hoja), cuenta(0), m(orden), siguiente(nullptr) {
+NodoBPlus::NodoBPlus(int orden, bool hoja) : isHoja(hoja), cuenta(0), m(orden), siguiente(nullptr), dotId(0) {
     claves = new tipoClave[m - 1];
     ramas = new PPagina[m];
     valores = new tipoValor[m - 1];
@@ -45,7 +45,7 @@ PPagina NodoBPlus::Orama(int i) const {
 }
 
 tipoValor NodoBPlus::Ovalor(int i) const {
-    if (i >= 0 && i < cuenta && esHoja) {
+    if (i >= 0 && i < cuenta && isHoja) {
         return valores[i];
     }
     return nullptr;
@@ -56,7 +56,7 @@ PPagina NodoBPlus::OramaSiguiente() const {
 }
 
 bool NodoBPlus::esHoja() const {
-    return esHoja;
+    return isHoja;
 }
 
 int NodoBPlus::Ocuenta() const {
@@ -80,7 +80,7 @@ void NodoBPlus::Prama(int i, PPagina p) {
 }
 
 void NodoBPlus::Pvalor(int i, tipoValor lista) {
-    if (i >= 0 && i < m - 1 && esHoja) {
+    if (i >= 0 && i < m - 1 && isHoja) {
         valores[i] = lista;
     }
 }
@@ -113,4 +113,12 @@ void NodoBPlus::agregarProductoEnHoja(tipoValor lista, Product* producto) {
     if (lista) {
         lista->insertar(producto);
     }
+}
+
+int NodoBPlus::OdotId() const {
+    return dotId;
+}
+
+void NodoBPlus::PdotId(int id) {
+    dotId = id;
 }

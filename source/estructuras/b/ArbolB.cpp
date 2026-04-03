@@ -1,4 +1,5 @@
 #include "ArbolB.h"
+#include <stdexcept>
 
 ArbolB::ArbolB() {
     this->orden = 0;
@@ -39,13 +40,13 @@ void ArbolB::crear() {
 
 void ArbolB::insertar(Product* cl) {
     if (cl == nullptr) {
-        throw "producto nulo";
+        throw std::runtime_error("producto nulo");
     }
     if (cl->getExpiry_date().empty()) {
-        throw "expiry_date vacio";
+        throw std::runtime_error("expiry_date vacio");
     }
     if (buscar(cl->getExpiry_date()) != nullptr) {
-        throw "ya existe un producto con expiry_date: " + cl->getExpiry_date();
+        throw std::runtime_error("ya existe un producto con expiry_date: " + cl->getExpiry_date());
     }
     raiz = insertar(raiz, cl);
 }
@@ -151,7 +152,7 @@ bool ArbolB::empujar(NodoB* actual, Product* producto, Product*& productoMediana
         bool esta;
         esta = buscarNodo(actual, producto, k);  // Pasar el Product* completo
         if (esta) {
-            throw "clave duplicada";
+            throw std::runtime_error("clave duplicada");
         }
         subeArriba = empujar(actual->Orama(k), producto, productoMediana, nuevo);  // Sin mediana
         if(subeArriba) {
@@ -211,33 +212,6 @@ void ArbolB::dividirNodo(NodoB* actual, Product*& mediana, NodoB*& nuevo, int po
     nuevo = nuevaPag; // devuelve el nuevo NodoB
 }
 
-void ArbolB::escribir() {
-    escribir(raiz, 1);
-}
-
-void ArbolB::escribir(NodoB* r, int h) {
-    int i;
-    if (r != nullptr) {
-        escribir(r->Orama(0), h + 5);
-        for (i = 1; i <= r->Ocuenta()/2; i++) {
-            // llamadas recursivas a la mitad de los subarboles
-            escribir(r->Orama(i), h + 5);
-            cout << endl;
-        }
-        // visualizacion de las claves de la pagina apuntada por r
-        for (i = 1; i <= r->Ocuenta(); i++) {
-            for (int j = 0; j <= h; j++) {
-                cout << " ";
-                cout << r->Oclave(i) << endl;             
-            }
-        }
-        // llamadas recursivas a la otra mitad de los subarboles
-        for (i = r->Ocuenta() / 2 + 1; i <= r->Ocuenta(); i++) {
-            escribir(r->Orama(i), h + 5);
-            cout << endl;
-        }
-    }
-}
 
 void ArbolB::listarCreciente() {
     inOrder(raiz);
@@ -427,7 +401,7 @@ void ArbolB::hacerBackup() {
 
 void ArbolB::restaurarBackup() {
     if (raizBackup == nullptr) {
-        throw "no hay backup disponible";
+        throw std::runtime_error("no hay backup disponible");
     }
     // Eliminar el árbol actual
     eliminarNodo(raiz);
@@ -482,3 +456,5 @@ void ArbolB::eliminarNodo(NodoB* nodo) {
     // Eliminar el nodo actual
     delete nodo;
 }
+// =============== MÉTODOS DE GENERACIÓN DOT ===============
+

@@ -23,6 +23,7 @@ class NodoBPlus {
         bool isHoja;                // Indica si el nodo es hoja
         int cuenta;                 // Cantidad de claves
         int m;                      // Orden del árbol
+        int dotId;                  // ID temporal para generación DOT
 
     public:
         NodoBPlus(int orden, bool hoja = false);
@@ -51,6 +52,10 @@ class NodoBPlus {
         // Operaciones auxiliares
         int buscarPosicion(tipoClave clave) const;
         void agregarProductoEnHoja(tipoValor lista, Product* producto);
+
+        // Métodos para manejo de IDs temporales (DOT)
+        int OdotId() const;
+        void PdotId(int id);
 };
 
 #endif

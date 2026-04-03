@@ -1,17 +1,13 @@
 #ifndef PRODUCTO_NO_ENCONTRADO_EXCEPTION_H
 #define PRODUCTO_NO_ENCONTRADO_EXCEPTION_H
 
-#include <exception>
+#include <stdexcept>
 #include <string>
 
-class ProductoNoEncontradoException : public std::exception {
-    private:
-        std::string mensaje;
-
+class ProductoNoEncontradoException : public std::runtime_error {
     public:
         explicit ProductoNoEncontradoException(const std::string &codigoBarra);
         ProductoNoEncontradoException(const std::string &operacion, const std::string &detalle);
-        const char *what() const noexcept override;
 };
 
 #endif

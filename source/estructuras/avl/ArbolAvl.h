@@ -3,7 +3,10 @@
 
 #include "NodoAvl.h"
 #include "pojo/Product.h"
+#include "helpers/DotGenerator.h"
 #include <string>
+#include <sstream>
+#include <map>
 
 using namespace std;
 
@@ -35,6 +38,16 @@ class ArbolAvl {
         void insertar(Product* valor);
         void eliminar(Product* valor);
         bool buscar(const string& nombre) const;
+        Product* obtenerProducto(const string& nombre) const;
+        
+        // Generación de DOT para visualización
+        bool generarDot(const string& filepath);
+
+    private:
+        // Método auxiliar recursivo para generar DOT
+        void asignarIdsRecursivo(NodoAvl* nodo, int& contador, map<NodoAvl*, int>& mapIds);
+        void agregarNodosAlGenerador(NodoAvl* nodo, DotGenerator& gen, const map<NodoAvl*, int>& mapIds);
+        void agregarAristasAlGenerador(NodoAvl* nodo, DotGenerator& gen, const map<NodoAvl*, int>& mapIds);
 };
 
 #endif

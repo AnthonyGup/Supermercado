@@ -3,6 +3,7 @@
 NodoB::NodoB(int orden) {
     this->m = orden;
     this->cuenta = 0;
+    this->dotId = 0;  // Inicializar ID temporal
     
     claves = new tipoClave[orden];
     ramas = new PPagina[orden + 1];
@@ -51,4 +52,12 @@ int NodoB::Ocuenta() const {
 
 void NodoB::Pcuenta(int valor) {
     cuenta = valor;
+}
+
+int NodoB::OdotId() const {
+    return dotId;
+}
+
+void NodoB::PdotId(int id) {
+    dotId = id;
 }
