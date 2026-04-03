@@ -3,8 +3,12 @@
 
 CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/Supermercado.cpp
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/ArbolAvl.h
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.h
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/ArbolBPlus.h
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.h
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.h
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h
@@ -55,6 +59,8 @@ CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h
+ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h
+ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h
@@ -97,6 +103,7 @@ CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unique_ptr.h
+ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_set.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype
@@ -151,15 +158,11 @@ CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/typeinfo
+ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_set
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility
  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector
  c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h
  c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
- c:/users/antho/documents/visualprojects/supermercado/source/estructuras/avl/arbolavl.h
- c:/users/antho/documents/visualprojects/supermercado/source/estructuras/b/arbolb.h
- c:/users/antho/documents/visualprojects/supermercado/source/estructuras/bplus/arbolbplus.h
- c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/normal/listaenlazada.h
- c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/ordenada/listaordenada.h
  c:/users/antho/documents/visualprojects/supermercado/source/pojo/product.h
 

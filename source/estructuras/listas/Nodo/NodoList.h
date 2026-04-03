@@ -7,7 +7,6 @@ class NodoList {
     private:
         NodoList *siguiente = nullptr;
         Product *dato = nullptr;
-        int indice;
 
     public:
         NodoList(Product *dato);
@@ -16,7 +15,6 @@ class NodoList {
         // GETTERS
         NodoList* getSiguiente() const;
         Product* getDato() const;
-        int getIndice() const;
 
         // SETTERS
         void setSiguiente(NodoList* siguiente);

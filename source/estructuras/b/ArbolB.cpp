@@ -1,41 +1,15 @@
 #include "ArbolB.h"
 #include <stdexcept>
+#include <vector>
 
 ArbolB::ArbolB() {
     this->orden = 0;
     this->raiz = nullptr;
-    this->raizBackup = nullptr;
 }
 
 ArbolB::ArbolB(int m) {
     this->orden = m;
     this->raiz = nullptr;
-    this->raizBackup = nullptr;
-}
-
-bool ArbolB::arbolBvacio() {
-    return this->raiz == nullptr;
-}
-
-NodoB* ArbolB::Oraiz() {
-    return this->raiz;
-}
-
-void ArbolB::Praiz(NodoB* r) {
-    this->raiz = r;
-}
-
-int ArbolB::Oorden() {
-    return this->orden;
-}
-
-void ArbolB::Porden(int ord) {
-    this->orden = ord;
-}
-
-void ArbolB::crear() {
-    orden = 0;
-    raiz = nullptr;
 }
 
 void ArbolB::insertar(Product* cl) {
@@ -48,7 +22,22 @@ void ArbolB::insertar(Product* cl) {
     if (buscar(cl->getExpiry_date()) != nullptr) {
         throw std::runtime_error("ya existe un producto con expiry_date: " + cl->getExpiry_date());
     }
-    raiz = insertar(raiz, cl);
+
+    if (raiz == nullptr) {
+        raiz = new NodoB(orden);
+        raiz->Pcuenta(1);
+        raiz->Pclave(1, cl);
+        return;
+    }
+
+    if (raiz->nodoLLeno()) {
+        NodoB* nuevaRaiz = new NodoB(orden);
+        nuevaRaiz->Prama(0, raiz);
+        dividirHijo(nuevaRaiz, 0);
+        raiz = nuevaRaiz;
+    }
+
+    insertarNoLleno(raiz, cl);
 }
 
 void ArbolB::eliminar(const string& cl) {
@@ -92,6 +81,12 @@ Product* ArbolB::buscar(NodoB* actual, const string& cl, int& n) {
     
     if (actual == nullptr) {
         return nullptr;
+    }
+    if (actual->Ocuenta() == 0) {
+        if (actual->nodoSemiVacio()) {
+            return nullptr;
+        }
+        return buscar(actual->Orama(0), cl, n);
     }
     else {
         int index;
@@ -138,6 +133,81 @@ NodoB* ArbolB::insertar(NodoB* raiz, Product* cl) {
     return raiz;
 }
 
+void ArbolB::insertarNoLleno(NodoB* nodo, Product* producto) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    int i = nodo->Ocuenta();
+    string clave = producto->getExpiry_date();
+
+    if (nodo->nodoSemiVacio()) {
+        while (i >= 1 && clave < nodo->Oclave(i)->getExpiry_date()) {
+            nodo->Pclave(i + 1, nodo->Oclave(i));
+            i--;
+        }
+        nodo->Pclave(i + 1, producto);
+        nodo->Pcuenta(nodo->Ocuenta() + 1);
+        return;
+    }
+
+    while (i >= 1 && clave < nodo->Oclave(i)->getExpiry_date()) {
+        i--;
+    }
+
+    if (nodo->Orama(i) != nullptr && nodo->Orama(i)->nodoLLeno()) {
+        dividirHijo(nodo, i);
+        if (clave > nodo->Oclave(i + 1)->getExpiry_date()) {
+            i++;
+        }
+    }
+
+    insertarNoLleno(nodo->Orama(i), producto);
+}
+
+void ArbolB::dividirHijo(NodoB* padre, int indiceHijo) {
+    if (padre == nullptr) {
+        return;
+    }
+
+    NodoB* hijo = padre->Orama(indiceHijo);
+    if (hijo == nullptr || !hijo->nodoLLeno()) {
+        return;
+    }
+
+    const int claveMediana = orden / 2;
+    Product* mediana = hijo->Oclave(claveMediana);
+
+    NodoB* nuevo = new NodoB(orden);
+    int clavesDerecha = hijo->Ocuenta() - claveMediana;
+
+    nuevo->Pcuenta(clavesDerecha);
+    int destinoClave = 1;
+    for (int i = claveMediana + 1; i <= hijo->Ocuenta(); i++) {
+        nuevo->Pclave(destinoClave++, hijo->Oclave(i));
+        hijo->Pclave(i, nullptr);
+    }
+
+    if (!hijo->nodoSemiVacio()) {
+        int destinoRama = 0;
+        for (int i = claveMediana; i <= hijo->Ocuenta(); i++) {
+            nuevo->Prama(destinoRama++, hijo->Orama(i));
+            hijo->Prama(i, nullptr);
+        }
+    }
+
+    hijo->Pcuenta(claveMediana - 1);
+
+    for (int i = padre->Ocuenta(); i >= indiceHijo + 1; i--) {
+        padre->Pclave(i + 1, padre->Oclave(i));
+        padre->Prama(i + 1, padre->Orama(i));
+    }
+
+    padre->Pclave(indiceHijo + 1, mediana);
+    padre->Prama(indiceHijo + 1, nuevo);
+    padre->Pcuenta(padre->Ocuenta() + 1);
+}
+
 bool ArbolB::empujar(NodoB* actual, Product* producto, Product*& productoMediana, NodoB*& nuevo) {
     int k;
     bool subeArriba = false;
@@ -181,56 +251,69 @@ void ArbolB::meterPagina(NodoB* actual, Product* producto, NodoB* ramaDr, int k)
 }
 
 void ArbolB::dividirNodo(NodoB* actual, Product*& mediana, NodoB*& nuevo, int pos) {
-    int i, posMdna, k;
-    NodoB* nuevaPag;
-    k = pos;
-    // posision de clave mediana
-    posMdna = (k <= orden/2) ? orden/2 : orden/2 + 1;
-    nuevaPag = new NodoB(orden);
-    int cnt = 1;
-    for (i = posMdna + 1; i < orden; i++) {
-        /* desplazada la mitad derecha a el nuevo NodoB, la clave 
-           mediana se queda en NodoB actual */
-        nuevaPag->Pclave(cnt, actual->Oclave(i));
-        nuevaPag->Prama(cnt - 1, actual->Orama(i));
-        cnt++;
-    }
-    nuevaPag->Pcuenta((orden-1) - posMdna); // claves de nuevo nodo
-    actual->Pcuenta(posMdna); // claves en NodoB origen
-    // inserta la clave y rama en el NodoB que le corresponde
-    if (k <= orden/2) {
-        meterPagina(actual, mediana, nuevo, pos); // en NodoB origen
-    } else {
-        pos = k - posMdna;
-        meterPagina(nuevaPag, mediana, nuevo, pos); // en NodoB nueva
-    }
-    // extrae clave mediana del NodoB origen
-    mediana = actual->Oclave(actual->Ocuenta());
-    // Rama0 del nuevo nodo ees la rama de la mediana 
-    nuevaPag->Prama(0, actual->Orama(actual->Ocuenta()));
-    actual->Pcuenta(actual->Ocuenta() -1); // se quita la mediana
-    nuevo = nuevaPag; // devuelve el nuevo NodoB
-}
+    const int totalClaves = actual->Ocuenta() + 1;
+    const int insertPos = pos + 1; // posicion 1-based dentro del nodo ya con la nueva clave
+    const int posMdna = orden / 2;
 
+    std::vector<Product*> clavesTemp(orden + 1, nullptr);
+    std::vector<NodoB*> ramasTemp(orden + 2, nullptr);
 
-void ArbolB::listarCreciente() {
-    inOrder(raiz);
-}
-
-void ArbolB::inOrder(NodoB* r) {
-    if (r) {
-        inOrder(r->Orama(0));
-        for(int k = 1; k <= r->Ocuenta(); k++) {
-            cout << r->Oclave(k)->getName() << " ";
-            inOrder(r->Orama(k));
+    // Copiar ramas originales, desplazando la rama nueva al lugar correcto
+    for (int i = 0; i <= actual->Ocuenta(); i++) {
+        if (i < insertPos) {
+            ramasTemp[i] = actual->Orama(i);
+        } else {
+            ramasTemp[i + 1] = actual->Orama(i);
         }
     }
+    ramasTemp[insertPos] = nuevo;
+
+    // Copiar claves originales, dejando espacio para la nueva clave
+    for (int i = 1; i <= actual->Ocuenta(); i++) {
+        if (i < insertPos) {
+            clavesTemp[i] = actual->Oclave(i);
+        } else {
+            clavesTemp[i + 1] = actual->Oclave(i);
+        }
+    }
+    clavesTemp[insertPos] = mediana;
+
+    NodoB* nuevaPag = new NodoB(orden);
+
+    // Nodo izquierdo: claves 1..posMdna-1 y ramas 0..posMdna-1
+    actual->Pcuenta(posMdna - 1);
+    for (int i = 1; i <= actual->Ocuenta(); i++) {
+        actual->Pclave(i, clavesTemp[i]);
+    }
+    for (int i = 0; i <= actual->Ocuenta(); i++) {
+        actual->Prama(i, ramasTemp[i]);
+    }
+
+    // Clave mediana que sube
+    mediana = clavesTemp[posMdna];
+
+    // Nodo derecho: claves posMdna+1..totalClaves y ramas posMdna..totalClaves
+    int nuevaCuenta = totalClaves - posMdna;
+    nuevaPag->Pcuenta(nuevaCuenta);
+    int destinoClave = 1;
+    for (int i = posMdna + 1; i <= totalClaves; i++) {
+        nuevaPag->Pclave(destinoClave++, clavesTemp[i]);
+    }
+    int destinoRama = 0;
+    for (int i = posMdna; i <= totalClaves; i++) {
+        nuevaPag->Prama(destinoRama++, ramasTemp[i]);
+    }
+
+    nuevo = nuevaPag;
 }
+
 
 NodoB* ArbolB::eliminar(NodoB* nodo, const string& clave) {
     if (nodo == nullptr) {
         return nullptr;
     }
+
+    const int minClaves = (orden - 1) / 2;
 
     int k = 1;
     while (k <= nodo->Ocuenta() && clave > nodo->Oclave(k)->getExpiry_date()) {
@@ -251,19 +334,19 @@ NodoB* ArbolB::eliminar(NodoB* nodo, const string& clave) {
         // Caso 2: El nodo es interno (no es hoja)
         if (encontrado) {
             // La clave se encuentra en este nodo
-            if (nodo->Orama(k-1)->Ocuenta() >= orden / 2 + 1) {
+            if (nodo->Orama(k-1) != nullptr && nodo->Orama(k-1)->Ocuenta() > minClaves) {
                 // El hijo izquierdo tiene suficientes claves, obtener predecesor
                 NodoB* pred = nodo->Orama(k-1);
-                while (!pred->nodoSemiVacio()) {
+                while (pred != nullptr && !pred->nodoSemiVacio()) {
                     pred = pred->Orama(pred->Ocuenta());
                 }
                 Product* predecesor = pred->Oclave(pred->Ocuenta());
                 nodo->Pclave(k, predecesor);
                 nodo->Prama(k-1, eliminar(nodo->Orama(k-1), predecesor->getExpiry_date()));
-            } else if (nodo->Orama(k)->Ocuenta() >= orden / 2 + 1) {
+            } else if (nodo->Orama(k) != nullptr && nodo->Orama(k)->Ocuenta() > minClaves) {
                 // El hijo derecho tiene suficientes claves, obtener sucesor
                 NodoB* succ = nodo->Orama(k);
-                while (!succ->nodoSemiVacio()) {
+                while (succ != nullptr && !succ->nodoSemiVacio()) {
                     succ = succ->Orama(0);
                 }
                 Product* sucesor = succ->Oclave(1);
@@ -279,7 +362,7 @@ NodoB* ArbolB::eliminar(NodoB* nodo, const string& clave) {
             bool es_en_ultimo = (k == nodo->Ocuenta() + 1);
             
             // Asegurar que el hijo tenga suficientes claves
-            if (nodo->Orama(k)->Ocuenta() < orden / 2 + 1) {
+            if (nodo->Orama(k) != nullptr && nodo->Orama(k)->Ocuenta() <= minClaves) {
                 llenarNodo(nodo, k);
             }
             
@@ -294,20 +377,24 @@ NodoB* ArbolB::eliminar(NodoB* nodo, const string& clave) {
 }
 
 void ArbolB::llenarNodo(NodoB* nodo, int k) {
-    // Si el hijo anterior tiene más del mínimo de claves, tomar una de él
-    if (k != 0 && nodo->Orama(k)->Ocuenta() < orden / 2 + 1 && 
-        nodo->Orama(k-1)->Ocuenta() >= orden / 2 + 1) {
+    const int minClaves = (orden - 1) / 2;
+
+    if (nodo == nullptr || nodo->Orama(k) == nullptr) {
+        return;
+    }
+
+    // Si el hijo anterior tiene mas del minimo de claves, tomar una de el
+    if (k > 0 && nodo->Orama(k-1) != nullptr && nodo->Orama(k-1)->Ocuenta() > minClaves) {
         tomarDelAnterior(nodo, k);
     }
-    // Si el hijo siguiente tiene más del mínimo de claves, tomar una de él
-    else if (k != nodo->Ocuenta() && nodo->Orama(k)->Ocuenta() < orden / 2 + 1 && 
-             nodo->Orama(k+1)->Ocuenta() >= orden / 2 + 1) {
+    // Si el hijo siguiente tiene mas del minimo de claves, tomar una de el
+    else if (k < nodo->Ocuenta() && nodo->Orama(k+1) != nullptr && nodo->Orama(k+1)->Ocuenta() > minClaves) {
         tomarDelSiguiente(nodo, k);
     }
-    // Si ambos hermanos tienen el mínimo, fusionar
-    else if (k != 0 && nodo->Orama(k)->Ocuenta() < orden / 2 + 1) {
+    // Si ambos hermanos tienen el minimo, fusionar
+    else if (k > 0) {
         fusionarNodos(nodo, k);
-    } else if (k != nodo->Ocuenta() && nodo->Orama(k)->Ocuenta() < orden / 2 + 1) {
+    } else {
         fusionarNodos(nodo, k+1);
     }
 }
@@ -315,65 +402,79 @@ void ArbolB::llenarNodo(NodoB* nodo, int k) {
 void ArbolB::tomarDelAnterior(NodoB* nodo, int pos) {
     NodoB* hijo = nodo->Orama(pos);
     NodoB* hermanoAnterior = nodo->Orama(pos - 1);
+    bool esHoja = (hijo->Orama(0) == nullptr);
+
+    int cuentaHijo = hijo->Ocuenta();
+    int cuentaHermano = hermanoAnterior->Ocuenta();
 
     // Desplazar las claves del hijo a la derecha
-    for (int i = hijo->Ocuenta(); i > 0; i--) {
+    for (int i = cuentaHijo; i >= 1; i--) {
         hijo->Pclave(i + 1, hijo->Oclave(i));
-        if (!hijo->nodoSemiVacio()) {
+    }
+    if (!esHoja) {
+        for (int i = cuentaHijo; i >= 0; i--) {
             hijo->Prama(i + 1, hijo->Orama(i));
         }
-    }
-    if (!hijo->nodoSemiVacio()) {
-        hijo->Prama(1, hijo->Orama(0));
+        hijo->Prama(0, hermanoAnterior->Orama(cuentaHermano));
     }
 
     hijo->Pclave(1, nodo->Oclave(pos));
-    if (!nodo->nodoSemiVacio()) {
-        hijo->Prama(0, hermanoAnterior->Orama(hermanoAnterior->Ocuenta()));
-    }
 
-    nodo->Pclave(pos, hermanoAnterior->Oclave(hermanoAnterior->Ocuenta()));
-    hijo->Pcuenta(hijo->Ocuenta() + 1);
-    hermanoAnterior->Pcuenta(hermanoAnterior->Ocuenta() - 1);
+    nodo->Pclave(pos, hermanoAnterior->Oclave(cuentaHermano));
+    hijo->Pcuenta(cuentaHijo + 1);
+    hermanoAnterior->Pcuenta(cuentaHermano - 1);
 }
 
 void ArbolB::tomarDelSiguiente(NodoB* nodo, int pos) {
     NodoB* hijo = nodo->Orama(pos);
     NodoB* hermanoSiguiente = nodo->Orama(pos + 1);
+    bool esHoja = (hijo->Orama(0) == nullptr);
 
-    hijo->Pclave(hijo->Ocuenta() + 1, nodo->Oclave(pos + 1));
-    if (!hijo->nodoSemiVacio()) {
-        hijo->Prama(hijo->Ocuenta() + 1, hermanoSiguiente->Orama(0));
+    int cuentaHijo = hijo->Ocuenta();
+    int cuentaHermano = hermanoSiguiente->Ocuenta();
+
+    hijo->Pclave(cuentaHijo + 1, nodo->Oclave(pos + 1));
+    if (!esHoja) {
+        hijo->Prama(cuentaHijo + 1, hermanoSiguiente->Orama(0));
     }
 
     nodo->Pclave(pos + 1, hermanoSiguiente->Oclave(1));
-    for (int i = 1; i < hermanoSiguiente->Ocuenta(); i++) {
+
+    for (int i = 1; i < cuentaHermano; i++) {
         hermanoSiguiente->Pclave(i, hermanoSiguiente->Oclave(i + 1));
-        if (!hermanoSiguiente->nodoSemiVacio()) {
+    }
+    if (!esHoja) {
+        for (int i = 0; i < cuentaHermano; i++) {
             hermanoSiguiente->Prama(i, hermanoSiguiente->Orama(i + 1));
         }
     }
 
-    hijo->Pcuenta(hijo->Ocuenta() + 1);
-    hermanoSiguiente->Pcuenta(hermanoSiguiente->Ocuenta() - 1);
+    hijo->Pcuenta(cuentaHijo + 1);
+    hermanoSiguiente->Pcuenta(cuentaHermano - 1);
 }
 
 void ArbolB::fusionarNodos(NodoB* nodo, int k) {
     NodoB* hijo = nodo->Orama(k - 1);
     NodoB* hermano = nodo->Orama(k);
+    bool esHoja = (hijo->Orama(0) == nullptr);
 
-    hijo->Pclave(hijo->Ocuenta() + 1, nodo->Oclave(k));
-    for (int i = 1; i <= hermano->Ocuenta(); i++) {
-        hijo->Pclave(hijo->Ocuenta() + 1, hermano->Oclave(i));
-        if (!hermano->nodoSemiVacio()) {
-            hijo->Prama(hijo->Ocuenta(), hermano->Orama(i - 1));
+    int cuentaHijo = hijo->Ocuenta();
+    int cuentaHermano = hermano->Ocuenta();
+
+    hijo->Pclave(cuentaHijo + 1, nodo->Oclave(k));
+    if (!esHoja) {
+        hijo->Prama(cuentaHijo + 1, hermano->Orama(0));
+    }
+    for (int i = 1; i <= cuentaHermano; i++) {
+        hijo->Pclave(cuentaHijo + 1 + i, hermano->Oclave(i));
+    }
+    if (!esHoja) {
+        for (int i = 1; i <= cuentaHermano; i++) {
+            hijo->Prama(cuentaHijo + 1 + i, hermano->Orama(i));
         }
     }
-    if (!hermano->nodoSemiVacio()) {
-        hijo->Prama(hijo->Ocuenta(), hermano->Orama(hermano->Ocuenta()));
-    }
 
-    hijo->Pcuenta(hijo->Ocuenta() + hermano->Ocuenta() + 1);
+    hijo->Pcuenta(cuentaHijo + cuentaHermano + 1);
 
     // Desplazar las claves y ramas del nodo padre
     for (int i = k; i < nodo->Ocuenta(); i++) {
@@ -382,65 +483,8 @@ void ArbolB::fusionarNodos(NodoB* nodo, int k) {
     }
 
     nodo->Pcuenta(nodo->Ocuenta() - 1);
+    nodo->Prama(nodo->Ocuenta() + 1, nullptr);
     delete hermano;
-}
-
-ArbolB::~ArbolB() {
-    eliminarNodo(raiz);
-    eliminarNodo(raizBackup);
-}
-
-void ArbolB::hacerBackup() {
-    // Limpiar backup anterior si existe
-    if (raizBackup != nullptr) {
-        eliminarNodo(raizBackup);
-    }
-    // Crear copia profunda de la raíz actual
-    raizBackup = cloneNodo(raiz);
-}
-
-void ArbolB::restaurarBackup() {
-    if (raizBackup == nullptr) {
-        throw std::runtime_error("no hay backup disponible");
-    }
-    // Eliminar el árbol actual
-    eliminarNodo(raiz);
-    // Restaurar desde el backup
-    raiz = cloneNodo(raizBackup);
-}
-
-void ArbolB::limpiarBackup() {
-    if (raizBackup != nullptr) {
-        eliminarNodo(raizBackup);
-        raizBackup = nullptr;
-    }
-}
-
-NodoB* ArbolB::cloneNodo(NodoB* nodo) {
-    if (nodo == nullptr) {
-        return nullptr;
-    }
-    
-    // Crear nuevo nodo con el mismo orden
-    NodoB* nuevoNodo = new NodoB(nodo->Ocuenta() > 0 ? orden : orden);
-    
-    // Copiar cuenta
-    nuevoNodo->Pcuenta(nodo->Ocuenta());
-    
-    // Copiar claves
-    for (int i = 1; i <= nodo->Ocuenta(); i++) {
-        nuevoNodo->Pclave(i, nodo->Oclave(i));
-    }
-    
-    // Clonar recursivamente las ramas
-    if (!nodo->nodoSemiVacio()) {
-        for (int i = 0; i <= nodo->Ocuenta(); i++) {
-            NodoB* ramaClonada = cloneNodo(nodo->Orama(i));
-            nuevoNodo->Prama(i, ramaClonada);
-        }
-    }
-    
-    return nuevoNodo;
 }
 
 void ArbolB::eliminarNodo(NodoB* nodo) {
@@ -449,12 +493,136 @@ void ArbolB::eliminarNodo(NodoB* nodo) {
     }
     
     // Eliminar recursivamente todos los hijos
-    for (int i = 0; i <= nodo->Ocuenta() && !nodo->nodoSemiVacio(); i++) {
-        eliminarNodo(nodo->Orama(i));
+    if (!nodo->nodoSemiVacio()) {
+        for (int i = 0; i <= nodo->Ocuenta(); i++) {
+            eliminarNodo(nodo->Orama(i));
+        }
     }
     
     // Eliminar el nodo actual
     delete nodo;
 }
-// =============== MÉTODOS DE GENERACIÓN DOT ===============
 
+ArbolB::~ArbolB() {
+    eliminarNodo(raiz);
+}
+
+bool ArbolB::generarDot(const string& filepath) {
+    try {
+        DotGenerator gen("arbol_b", "Arbol B (Orden " + to_string(orden) + ")");
+        
+        if (raiz == nullptr) {
+            gen.addNode("empty", "Arbol Vacio", "ellipse", "lightgray");
+        } else {
+            // Paso 1: Asignar IDs secuenciales a todos los nodos
+            int contador = 0;
+            map<NodoB*, int> mapIds;
+            asignarIdsRecursivo(raiz, contador, mapIds);
+            
+            // Paso 2: Agregar todos los nodos al generador
+            unordered_set<NodoB*> visitadosNodos;
+            agregarNodosAlGenerador(raiz, gen, mapIds, visitadosNodos);
+            
+            // Paso 3: Agregar todas las aristas
+            unordered_set<NodoB*> visitadosAristas;
+            agregarAristasAlGenerador(raiz, gen, mapIds, visitadosAristas);
+        }
+        
+        return gen.saveToDot(filepath);
+    } catch (const exception& e) {
+        cerr << "Error al generar DOT del Arbol B: " << e.what() << endl;
+        return false;
+    }
+}
+
+// Paso 1: Asignar IDs unicos y correlativos a cada nodo
+void ArbolB::asignarIdsRecursivo(NodoB* nodo, int& contador, std::map<NodoB*, int>& mapIds) {
+    if (nodo == nullptr) {
+        return;
+    }
+    
+    // Pre-order: asignar ID primero
+    contador++;
+    mapIds[nodo] = contador;
+    
+    // Luego procesar todos los hijos validos
+    for (int i = 0; i <= nodo->Ocuenta(); i++) {
+        if (nodo->Orama(i) != nullptr) {
+            asignarIdsRecursivo(nodo->Orama(i), contador, mapIds);
+        }
+    }
+}
+
+// Paso 2: Agregar todos los nodos definidos correctamente
+void ArbolB::agregarNodosAlGenerador(NodoB* nodo, DotGenerator& gen, const std::map<NodoB*, int>& mapIds, std::unordered_set<NodoB*>& visitados) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    if (visitados.count(nodo) > 0) {
+        return;
+    }
+    visitados.insert(nodo);
+    
+    // Obtener el ID de este nodo
+    int nodeId = mapIds.at(nodo);
+    string id = "node_" + to_string(nodeId);
+    
+    // Crear etiqueta con las fechas de vencimiento
+    stringstream label;
+    label << "ID: " << nodeId << "\n";
+    label << "Tipo: " << (nodo->Orama(0) == nullptr ? "Hoja" : "Interno") << "\n";
+    label << "Claves: ";
+    for (int i = 1; i <= nodo->Ocuenta(); i++) {
+        if (nodo->Oclave(i) != nullptr) {
+            label << nodo->Oclave(i)->getExpiry_date();
+        }
+        if (i < nodo->Ocuenta()) {
+            label << " | ";
+        }
+    }
+    
+    // Determinar color y forma
+    bool esHoja = (nodo->Orama(0) == nullptr);
+    bool lleno = (nodo->Ocuenta() >= orden - 1);
+    
+    string color = lleno ? "lightyellow" : "lightblue";
+    string shape = esHoja ? "ellipse" : "box";
+    
+    gen.addNode(id, label.str(), shape, color);
+    
+    // Recursivamente agregar nodos hijos
+    for (int i = 0; i <= nodo->Ocuenta(); i++) {
+        if (nodo->Orama(i) != nullptr) {
+            agregarNodosAlGenerador(nodo->Orama(i), gen, mapIds, visitados);
+        }
+    }
+}
+
+// Paso 3: Agregar todas las aristas
+void ArbolB::agregarAristasAlGenerador(NodoB* nodo, DotGenerator& gen, const std::map<NodoB*, int>& mapIds, std::unordered_set<NodoB*>& visitados) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    if (visitados.count(nodo) > 0) {
+        return;
+    }
+    visitados.insert(nodo);
+    
+    // Obtener ID del padre
+    int parentId = mapIds.at(nodo);
+    string parentStr = "node_" + to_string(parentId);
+    
+    // Agregar aristas a todos los hijos validos
+    for (int i = 0; i <= nodo->Ocuenta(); i++) {
+        if (nodo->Orama(i) != nullptr) {
+            int childId = mapIds.at(nodo->Orama(i));
+            string childStr = "node_" + to_string(childId);
+            gen.addEdge(parentStr, childStr, "r" + to_string(i));
+            
+            // Recursivamente procesar hijos
+            agregarAristasAlGenerador(nodo->Orama(i), gen, mapIds, visitados);
+        }
+    }
+}

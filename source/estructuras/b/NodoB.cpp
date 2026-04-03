@@ -27,7 +27,7 @@ bool NodoB::nodoLLeno() const {
 }
 
 bool NodoB::nodoSemiVacio() const {
-    return cuenta < (m / 2);
+    return ramas[0] == nullptr;
 }
 
 NodoB::tipoClave NodoB::Oclave(int i) const {

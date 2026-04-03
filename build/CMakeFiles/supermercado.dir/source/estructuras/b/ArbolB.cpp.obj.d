@@ -77,8 +77,9 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\functional_hash.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hash_bytes.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_string.tcc \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\sstream \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\istream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ios_base.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_classes.h \
@@ -97,18 +98,46 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\ctype_inline.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_facets.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\basic_ios.tcc \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\istream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\istream.tcc \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\sstream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\sstream.tcc \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\map \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_tree.h \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ext\aligned_buffer.h \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_map.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\fstream \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\codecvt.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\basic_file.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits\c++io.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\fstream.tcc \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\memory \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_construct.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_uninitialized.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_tempbuf.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_raw_storage_iter.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\typeinfo \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ext\concurrence.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\uses_allocator.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\functional \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\tuple \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\utility \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_relops.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\array \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\uses_allocator.h \
- c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multimap.h
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\unique_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\shared_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\shared_ptr_base.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\allocated_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ext\aligned_buffer.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\shared_ptr_atomic.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\atomic_base.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\backward\auto_ptr.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\vector \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_vector.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_bvector.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\vector.tcc \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\map \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_tree.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_map.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multimap.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\unordered_set \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hashtable.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hashtable_policy.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\unordered_set.h

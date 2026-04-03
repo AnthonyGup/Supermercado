@@ -254,6 +254,7 @@ CMakeFiles/supermercado.dir/source/estructuras/avl/NodoAvl.cpp.obj: C:/Users/ant
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
 
 CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.cpp \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.h \
@@ -272,23 +273,30 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/
   c:/mingw/include/wchar.h \
   c:/mingw/include/wctype.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/auto_ptr.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/binders.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/alloc_traits.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocated_ptr.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocator.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/atomic_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/atomic_lockfree_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_ios.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_ios.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_string.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_string.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/char_traits.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/codecvt.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/concept_check.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/cpp_type_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/cxxabi_forced.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/fstream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h \
@@ -305,8 +313,13 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/predefined_ops.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ptr_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/range_access.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/shared_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/shared_ptr_atomic.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/shared_ptr_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/sstream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_algobase.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_construct.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_function.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h \
@@ -314,12 +327,19 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_map.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_multimap.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_raw_storage_iter.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_tempbuf.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_tree.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_vector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unique_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_set.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cerrno \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/clocale \
@@ -334,19 +354,25 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/aligned_buffer.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/atomicity.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/concurrence.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/new_allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/numeric_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/string_conversions.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/type_traits.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/fstream \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/functional \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/initializer_list \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ios \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iosfwd \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iostream \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/istream \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/map \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/memory \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/atomic_word.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/basic_file.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++config.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++io.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++locale.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/cpu_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/ctype_base.h \
@@ -364,7 +390,10 @@ CMakeFiles/supermercado.dir/source/estructuras/b/ArbolB.cpp.obj: C:/Users/antho/
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/system_error \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/typeinfo \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_set \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
@@ -454,6 +483,7 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: C:/User
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/ArbolBPlus.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/NodoBPlus.h \
@@ -471,23 +501,31 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: C:/User
   c:/mingw/include/w32api.h \
   c:/mingw/include/wchar.h \
   c:/mingw/include/wctype.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/auto_ptr.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/backward/binders.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/alloc_traits.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocated_ptr.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/allocator.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/atomic_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/atomic_lockfree_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_ios.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_ios.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_string.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/basic_string.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/char_traits.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/codecvt.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/concept_check.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/cpp_type_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/cxxabi_forced.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/exception_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/fstream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h \
@@ -504,16 +542,33 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: C:/User
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/predefined_ops.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ptr_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/range_access.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/shared_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/shared_ptr_atomic.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/shared_ptr_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/sstream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_algobase.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_bvector.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_construct.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_function.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_funcs.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_iterator_base_types.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_map.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_multimap.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_pair.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_raw_storage_iter.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_relops.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_tempbuf.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_tree.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_uninitialized.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stl_vector.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/streambuf_iterator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unique_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_set.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cctype \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/cerrno \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/clocale \
@@ -525,20 +580,28 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: C:/User
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/assertions.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/debug/debug.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/exception \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/aligned_buffer.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/alloc_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/atomicity.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/concurrence.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/new_allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/numeric_traits.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/string_conversions.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ext/type_traits.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/fstream \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/functional \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/initializer_list \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ios \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iosfwd \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iostream \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/istream \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/map \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/memory \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/atomic_word.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/basic_file.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++config.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++io.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/c++locale.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/cpu_defines.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits/ctype_base.h \
@@ -554,7 +617,12 @@ CMakeFiles/supermercado.dir/source/estructuras/bplus/ArbolBPlus.cpp.obj: C:/User
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/streambuf \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/string \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/system_error \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/typeinfo \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_set \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
@@ -1042,10 +1110,19 @@ CMakeFiles/supermercado.dir/source/excepciones/ProductoNoEncontradoException.cpp
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h
 
 CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: C:/Users/antho/Documents/VisualProjects/Supermercado/source/frontend/Frontend.cpp \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/ArbolAvl.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/NodoAvl.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/ArbolBPlus.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/NodoBPlus.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h \
+  C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/StringHelper.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
   C:/Users/antho/Documents/VisualProjects/Supermercado/source/frontend/Frontend.h \
   c:/mingw/include/_mingw.h \
@@ -1089,6 +1166,8 @@ CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: C:/Users/antho/Doc
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functexcept.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/functional_hash.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hash_bytes.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/istream.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_classes.h \
@@ -1154,6 +1233,7 @@ CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: C:/Users/antho/Doc
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/stringfwd.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uniform_int_dist.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unique_ptr.h \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_set.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/uses_allocator.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/vector.tcc \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bitset \
@@ -1222,22 +1302,12 @@ CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: C:/Users/antho/Doc
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/tuple \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/type_traits \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/typeinfo \
+  c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_set \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/utility \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/vector \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdarg.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stddef.h \
   c:/mingw/lib/gcc/mingw32/6.3.0/include/stdint.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/avl/NodoAvl.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/avl/arbolavl.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/b/NodoB.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/b/arbolb.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/bplus/NodoBPlus.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/bplus/arbolbplus.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/nodo/nodolist.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/normal/listaenlazada.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/ordenada/listaordenada.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/helpers/csvloader.h \
-  c:/users/antho/documents/visualprojects/supermercado/source/helpers/stringhelper.h \
   c:/users/antho/documents/visualprojects/supermercado/source/pojo/product.h
 
 CMakeFiles/supermercado.dir/source/helpers/CSVLoader.cpp.obj: C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.cpp \
@@ -1608,10 +1678,6 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/array:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h:
 
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/bplus/arbolbplus.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/avl/NodoAvl.h:
-
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ostream_insert.h:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/NodoAvl.h:
@@ -1644,8 +1710,6 @@ c:/mingw/include/locale.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ostream.tcc:
 
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/bplus/NodoBPlus.h:
-
 c:/mingw/include/msvcrtver.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/locale_facets_nonio.h:
@@ -1671,6 +1735,8 @@ c:/mingw/include/sys/types.h:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/streambuf:
 
 c:/mingw/include/time.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/unordered_set.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/atomic_base.h:
 
@@ -1719,8 +1785,6 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/char_traits.h:
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/cxxabi_forced.h:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/ios_base.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/ordenada/listaordenada.h:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.h:
 
@@ -1922,6 +1986,12 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/iterator:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.h:
 
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/hashtable_policy.h:
+
+c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/unordered_set:
+
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/bits/parse_numbers.h:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.cpp:
@@ -1929,8 +1999,6 @@ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/ArbolBPlus.cpp:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/normal/listaenlazada.h:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h:
 
@@ -1955,6 +2023,8 @@ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/o
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.cpp:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/frontend/Frontend.cpp:
+
+C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.h:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/frontend/Frontend.h:
 
@@ -2008,21 +2078,7 @@ c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/ratio:
 
 c:/mingw/lib/gcc/mingw32/6.3.0/include/c++/regex:
 
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/avl/arbolavl.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/b/NodoB.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/b/arbolb.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/estructuras/listas/nodo/nodolist.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/helpers/csvloader.h:
-
-c:/users/antho/documents/visualprojects/supermercado/source/helpers/stringhelper.h:
-
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.cpp:
-
-C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.h:
 
 C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/StringHelper.cpp:
 

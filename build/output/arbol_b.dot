@@ -1,0 +1,24 @@
+digraph arbol_b {
+    rankdir=TB;
+    bgcolor=white;
+    node [fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    label="Arbol B (Orden 4)";
+    labelloc=top;
+
+    node_1 [label="ID: 1\nTipo: Interno\nClaves: 2026-06-01", shape=box, style=filled, fillcolor=lightblue];
+    node_2 [label="ID: 2\nTipo: Interno\nClaves: 2026-04-20", shape=box, style=filled, fillcolor=lightblue];
+    node_3 [label="ID: 3\nTipo: Hoja\nClaves: 2026-04-03", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_4 [label="ID: 4\nTipo: Hoja\nClaves: 2026-05-15", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_5 [label="ID: 5\nTipo: Interno\nClaves: 2026-10-01 | 2026-12-31", shape=box, style=filled, fillcolor=lightblue];
+    node_6 [label="ID: 6\nTipo: Hoja\nClaves: 2026-08-10 | 2026-09-15", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_7 [label="ID: 7\nTipo: Hoja\nClaves: 2026-12-25", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_8 [label="ID: 8\nTipo: Hoja\nClaves: 2027-02-28", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_1 -> node_2 [label="r0"];
+    node_2 -> node_3 [label="r0"];
+    node_2 -> node_4 [label="r1"];
+    node_1 -> node_5 [label="r1"];
+    node_5 -> node_6 [label="r0"];
+    node_5 -> node_7 [label="r1"];
+    node_5 -> node_8 [label="r2"];
+}

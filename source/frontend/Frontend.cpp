@@ -1,7 +1,7 @@
 #include "Frontend.h"
-#include "../source/helpers/CSVLoader.h"
-#include "../source/helpers/StringHelper.h"
-#include "../source/estructuras/listas/Nodo/NodoList.h"
+#include "helpers/CSVLoader.h"
+#include "helpers/StringHelper.h"
+#include "estructuras/listas/Nodo/NodoList.h"
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
@@ -32,10 +32,12 @@ void Frontend::showMainMenu() {
     std::cout << "2. Insertar desde CSV\n";
     std::cout << "3. Eliminar Producto\n";
     std::cout << "4. Buscar Producto\n";
-    std::cout << "5. Exportar Arbol AVL a .DOT\n";
-    std::cout << "6. Salir\n\n";
+    std::cout << "5. Mostrar Listas\n";
+    std::cout << "6. Exportar Arboles a .DOT\n";
+    std::cout << "7. Medir Latencias de Querys\n";
+    std::cout << "8. Salir\n\n";
     
-    int option = readOption(1, 6);
+    int option = readOption(1, 8);
     
     switch (option) {
         case 1:
@@ -51,9 +53,15 @@ void Frontend::showMainMenu() {
             searchProduct();
             break;
         case 5:
-            exportAVLToDot();
+            showListsMenu();
             break;
         case 6:
+            exportTreesMenu();
+            break;
+        case 7:
+            measureQueryLatencies();
+            break;
+        case 8:
             exitApp();
             break;
     }
@@ -559,6 +567,156 @@ void Frontend::searchProduct() {
     pause();
 }
 
+void Frontend::showListsMenu() {
+    while (true) {
+        clearScreen();
+        showSeparator();
+        std::cout << "MOSTRAR LISTAS\n";
+        showSeparator();
+        
+        std::cout << "\n1. Lista Enlazada\n";
+        std::cout << "2. Lista Ordenada\n";
+        std::cout << "3. Volver al menu principal\n\n";
+        
+        int opcion = readOption(1, 3);
+        
+        switch (opcion) {
+            case 1: {
+                clearScreen();
+                showSeparator();
+                std::cout << "LISTA ENLAZADA\n";
+                showSeparator();
+                
+                if (lista) {
+                    if (lista->estaVacia()) {
+                        std::cout << "\nLa lista enlazada esta vacia.\n";
+                    } else {
+                        std::cout << "\n";
+                        lista->mostrar();
+                    }
+                }
+                pause();
+                break;
+            }
+            case 2: {
+                clearScreen();
+                showSeparator();
+                std::cout << "LISTA ORDENADA\n";
+                showSeparator();
+                
+                if (listaOrdenada) {
+                    if (listaOrdenada->estaVacia()) {
+                        std::cout << "\nLa lista ordenada esta vacia.\n";
+                    } else {
+                        std::cout << "\n";
+                        listaOrdenada->mostrar();
+                    }
+                }
+                pause();
+                break;
+            }
+            case 3:
+                return;
+        }
+    }
+}
+
+void Frontend::measureQueryLatencies() {
+    clearScreen();
+    showSeparator();
+    std::cout << "MEDICION DE LATENCIAS DE QUERYS (NOMBRE)\n";
+    showSeparator();
+
+    if (lista == nullptr || listaOrdenada == nullptr || arbolAVL == nullptr) {
+        showError("Faltan estructuras para ejecutar el benchmark.");
+        pause();
+        return;
+    }
+
+    if (lista->estaVacia()) {
+        showError("No hay datos cargados. Inserta productos o carga CSV primero.");
+        pause();
+        return;
+    }
+
+    int nConsultas = readInteger("Cantidad de consultas por corrida (ej: 20): ");
+    int repeticiones = readInteger("Cantidad de repeticiones (ej: 5): ");
+
+    if (nConsultas <= 0 || repeticiones <= 0) {
+        showError("N y M deben ser mayores a cero.");
+        pause();
+        return;
+    }
+
+    std::vector<std::string> consultasExito;
+    std::vector<std::string> consultasFallo;
+
+    std::cout << "\nIngresa " << nConsultas << " nombres existentes para pruebas exitosas:\n";
+    for (int i = 0; i < nConsultas; i++) {
+        consultasExito.push_back(readString("Nombre existente #" + std::to_string(i + 1) + ": "));
+    }
+
+    for (int i = 0; i < nConsultas; i++) {
+        consultasFallo.push_back("__no_existe_" + std::to_string(i) + "__");
+    }
+
+    auto medirPromedioMicro = [&](const std::vector<std::string>& consultas, int estructura) -> double {
+        long long totalMicro = 0;
+        long long operaciones = 0;
+
+        for (int r = 0; r < repeticiones; r++) {
+            for (const auto& q : consultas) {
+                auto inicio = std::chrono::high_resolution_clock::now();
+
+                switch (estructura) {
+                    case 0:
+                        (void)lista->buscarNodo(q);
+                        break;
+                    case 1:
+                        (void)listaOrdenada->buscarNodo(q);
+                        break;
+                    case 2:
+                        (void)arbolAVL->obtenerProducto(q);
+                        break;
+                }
+
+                auto fin = std::chrono::high_resolution_clock::now();
+                totalMicro += std::chrono::duration_cast<std::chrono::microseconds>(fin - inicio).count();
+                operaciones++;
+            }
+        }
+
+        if (operaciones == 0) {
+            return 0.0;
+        }
+        return static_cast<double>(totalMicro) / static_cast<double>(operaciones);
+    };
+
+    double exitoLista = medirPromedioMicro(consultasExito, 0);
+    double exitoListaOrd = medirPromedioMicro(consultasExito, 1);
+    double exitoAvl = medirPromedioMicro(consultasExito, 2);
+
+    double falloLista = medirPromedioMicro(consultasFallo, 0);
+    double falloListaOrd = medirPromedioMicro(consultasFallo, 1);
+    double falloAvl = medirPromedioMicro(consultasFallo, 2);
+
+    std::cout << "\n=== RESULTADOS (promedio por consulta en microsegundos) ===\n";
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "\nCaso EXITO:\n";
+    std::cout << "- Lista Enlazada : " << exitoLista << " us\n";
+    std::cout << "- Lista Ordenada : " << exitoListaOrd << " us\n";
+    std::cout << "- Arbol AVL      : " << exitoAvl << " us\n";
+
+    std::cout << "\nCaso FALLO:\n";
+    std::cout << "- Lista Enlazada : " << falloLista << " us\n";
+    std::cout << "- Lista Ordenada : " << falloListaOrd << " us\n";
+    std::cout << "- Arbol AVL      : " << falloAvl << " us\n";
+
+    std::cout << "\nN consultas: " << nConsultas << " | M repeticiones: " << repeticiones << "\n";
+    showSuccess("Benchmark de latencias completado.");
+    pause();
+}
+
 void Frontend::exitApp() {
     clearScreen();
     std::cout << "\nGracias por usar el sistema de gestion!\n\n";
@@ -706,13 +864,26 @@ void Frontend::showSeparator() {
 
 // ========== EXPORTAR ARBOL AVL A .DOT ==========
 
-void Frontend::exportAVLToDot() {
+void Frontend::exportTreesMenu() {
     clearScreen();
     showSeparator();
-    std::cout << "EXPORTAR ARBOL AVL A FORMATO .DOT\n";
+    std::cout << "EXPORTAR ARBOLES A FORMATO .DOT\n";
     showSeparator();
     
-    std::string outputDir = readString("Directorio de salida (ej: output) [Enter=current]: ");
+    std::cout << "\nQue arbol deseas exportar?\n";
+    std::cout << "1. Arbol AVL\n";
+    std::cout << "2. Arbol B\n";
+    std::cout << "3. Arbol B Plus\n";
+    std::cout << "4. Todos\n";
+    std::cout << "5. Cancelar\n\n";
+    
+    int opcion = readOption(1, 5);
+    
+    if (opcion == 5) {
+        return;
+    }
+    
+    std::string outputDir = readString("\nDirectorio de salida (ej: output) [Enter=current]: ");
     if (outputDir.empty()) {
         outputDir = ".";
     }
@@ -726,25 +897,54 @@ void Frontend::exportAVLToDot() {
     #endif
     system(mkdirCmd.c_str());
     
-    std::cout << "\nGenerando archivo DOT...\n";
+    std::cout << "\nGenerando archivos DOT...\n";
     showSeparator();
     
     try {
         // Generar DOT para Arbol AVL
-        std::string avlPath = outputDir + "/arbol_avl.dot";
-        std::cout << "Generando Arbol AVL... ";
-        if (arbolAVL && arbolAVL->generarDot(avlPath)) {
-            std::cout << "[OK]\n";
-            showSeparator();
-            std::cout << "\nArchivo generado en: " << avlPath << "\n";
-            std::cout << "\nPara visualizar el arbol:\n";
-            std::cout << "  1. Instala Graphviz desde: https://graphviz.org/download/\n";
-            std::cout << "  2. Convierte a imagen (Windows CMD):\n";
-            std::cout << "     dot -Tpng " << avlPath << " -o " << outputDir << "\\arbol_avl.png\n";
-            std::cout << "  3. O visualiza en linea en: https://dreampuf.github.io/GraphvizOnline/\n";
-        } else {
-            showError("Error al generar DOT del Arbol AVL");
+        if (opcion == 1 || opcion == 4) {
+            std::string avlPath = outputDir + "/arbol_avl.dot";
+            std::cout << "Generando Arbol AVL... ";
+            if (arbolAVL && arbolAVL->generarDot(avlPath)) {
+                std::cout << "[OK]\n";
+                std::cout << "  Archivo: " << avlPath << "\n";
+            } else {
+                showError("Error al generar DOT del Arbol AVL");
+            }
         }
+        
+        // Generar DOT para Arbol B
+        if (opcion == 2 || opcion == 4) {
+            std::string bPath = outputDir + "/arbol_b.dot";
+            std::cout << "Generando Arbol B... ";
+            if (arbolB && arbolB->generarDot(bPath)) {
+                std::cout << "[OK]\n";
+                std::cout << "  Archivo: " << bPath << "\n";
+            } else {
+                showError("Error al generar DOT del Arbol B");
+            }
+        }
+
+        // Generar DOT para Arbol B Plus
+        if (opcion == 3 || opcion == 4) {
+            std::string bplusPath = outputDir + "/arbol_bplus.dot";
+            std::cout << "Generando Arbol B Plus... ";
+            if (arbolBPlus && arbolBPlus->generarDot(bplusPath)) {
+                std::cout << "[OK]\n";
+                std::cout << "  Archivo: " << bplusPath << "\n";
+            } else {
+                showError("Error al generar DOT del Arbol B Plus");
+            }
+        }
+        
+        showSeparator();
+        std::cout << "\nPara visualizar los arboles:\n";
+        std::cout << "  1. Instala Graphviz desde: https://graphviz.org/download/\n";
+        std::cout << "  2. Convierte a imagen (Windows CMD):\n";
+        std::cout << "     dot -Tpng archivo.dot -o archivo.png\n";
+        std::cout << "  3. O visualiza en linea en: https://dreampuf.github.io/GraphvizOnline/\n";
+        
+        showSuccess("Exportacion completada.");
         
     } catch (const exception& e) {
         showError("Excepcion durante exportacion: " + string(e.what()));

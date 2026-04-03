@@ -1,0 +1,16 @@
+digraph arbol_bplus {
+    rankdir=TB;
+    bgcolor=white;
+    node [fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    label="Arbol B+ de Categorias (Orden 4)";
+    labelloc=top;
+
+    node_1 [label="ID: 1\nTipo: Interno\nClaves: Conservas | Lácteos", shape=box, style=filled, fillcolor=lightblue];
+    node_2 [label="ID: 2\nTipo: Hoja\nClaves: Alimentos(2) | Bebidas(1)", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_3 [label="ID: 3\nTipo: Hoja\nClaves: Conservas(2) | Desayuno(1)", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_4 [label="ID: 4\nTipo: Hoja\nClaves: Lácteos(3) | Panadería(1)", shape=ellipse, style=filled, fillcolor=lightblue];
+    node_1 -> node_2 [label="r0"];
+    node_1 -> node_3 [label="r1"];
+    node_1 -> node_4 [label="r2"];
+}

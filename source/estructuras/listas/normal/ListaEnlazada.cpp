@@ -137,13 +137,7 @@ void ListaEnlazada::mostrar() const
 		Product *producto = actual->getDato();
 		if (producto != nullptr)
 		{
-			cout << "- Nombre: " << producto->getName()
-				 << " | Codigo: " << producto->getBarcode()
-				 << " | Categoria: " << producto->getCategory()
-				 << " | Vencimiento: " << producto->getExpiry_date()
-				 << " | Marca: " << producto->getBrand()
-				 << " | Precio: " << producto->getPrice()
-				 << " | Stock: " << producto->getStock() << endl;
+			cout << "- " << producto->getName() << endl;
 		}
 		actual = actual->getSiguiente();
 	}

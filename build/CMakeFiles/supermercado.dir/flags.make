@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/supermercado.dir/includes_CXX.rsp
 
-CXX_FLAGS = -g -std=c++1z -Wall -Wextra
+CXX_FLAGS = -g -std=c++1z -Wall -Wextra -Wpedantic
 

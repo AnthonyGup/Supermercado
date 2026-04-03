@@ -21,10 +21,6 @@ Product* NodoList::getDato() const {
     return dato;
 }
 
-int NodoList::getIndice() const {
-    return this->indice;
-}
-
 // SETTERS
 void NodoList::setSiguiente(NodoList* siguiente) {
     this->siguiente = siguiente;

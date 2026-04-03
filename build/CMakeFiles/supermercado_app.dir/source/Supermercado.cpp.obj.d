@@ -144,6 +144,10 @@ CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multimap.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/b/ArbolB.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/b/NodoB.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\unordered_set \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hashtable.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hashtable_policy.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\unordered_set.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/bplus/ArbolBPlus.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/bplus/NodoBPlus.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
@@ -152,9 +156,8 @@ CMakeFiles/supermercado_app.dir/source/Supermercado.cpp.obj: \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/listas/normal/ListaEnlazada.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\estructuras/listas/ordenada/ListaOrdenada.h \
  C:\Users\antho\Documents\VisualProjects\Supermercado\source\frontend/Frontend.h \
- c:\users\antho\documents\visualprojects\supermercado\source\pojo\product.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\avl\arbolavl.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\b\arbolb.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\bplus\arbolbplus.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\normal\listaenlazada.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\ordenada\listaordenada.h
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/ArbolAvl.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/ArbolBPlus.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.h

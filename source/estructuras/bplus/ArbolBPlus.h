@@ -3,9 +3,12 @@
 
 #include "NodoBPlus.h"
 #include "listas/normal/ListaEnlazada.h"
+#include "helpers/DotGenerator.h"
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -19,15 +22,6 @@ class ArbolBPlus {
     public:
         explicit ArbolBPlus(int m = 3);
         ~ArbolBPlus();
-
-        // Getters
-        bool arbolBPlusvacio() const;
-        PPagina Oraiz() const;
-        int Oorden() const;
-
-        // Setters
-        void Praiz(PPagina r);
-        void Porden(int ord);
 
         // Operaciones principales
         void crear();
@@ -47,8 +41,8 @@ class ArbolBPlus {
         // Listar productos de una categoría específica
         void listarCategoria(const string& categoria);
 
-        // Mostrar estructura del árbol
-        void mostrarArbol();
+        // Generacion de DOT para visualizacion
+        bool generarDot(const string& filepath);
 
     private:
         // Métodos privados para búsqueda
@@ -59,16 +53,17 @@ class ArbolBPlus {
         void dividirNodo(PPagina nodoPadre, int indice, PPagina nodoLleno);
         void insertatEnNodoNoLleno(PPagina nodo, Product* producto);
 
+        // Métodos auxiliares para generar DOT
+        void asignarIdsRecursivo(PPagina nodo, int& contador, std::map<PPagina, int>& mapIds);
+        void agregarNodosAlGenerador(PPagina nodo, DotGenerator& gen, const std::map<PPagina, int>& mapIds, std::unordered_set<PPagina>& visitados);
+        void agregarAristasAlGenerador(PPagina nodo, DotGenerator& gen, const std::map<PPagina, int>& mapIds, std::unordered_set<PPagina>& visitados);
+
         // Métodos privados para eliminación
         void eliminar(PPagina nodo, const string& categoria);
         void llenarNodo(PPagina nodo, int pos);
         void fusionarNodos(PPagina nodo, int pos);
         void tomarDelAnterior(PPagina nodo, int pos);
         void tomarDelSiguiente(PPagina nodo, int pos);
-
-        // Métodos auxiliares
-        int buscarIndice(PPagina nodo, const string& categoria) const;
-        void mostrarArbol(PPagina nodo, int profundidad);
 };
 
 #endif

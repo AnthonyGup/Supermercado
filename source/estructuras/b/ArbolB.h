@@ -2,10 +2,12 @@
 #define ARBOL_B_H
 
 #include "NodoB.h"
+#include "helpers/DotGenerator.h"
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -13,34 +15,30 @@ class ArbolB {
 	protected:
 		int orden;
 		NodoB *raiz;
-		NodoB *raizBackup;  // Backup para transacciones
 	public:
 		explicit ArbolB();
 		ArbolB(int m);
 		~ArbolB();
 
-		bool arbolBvacio();
-		NodoB* Oraiz();
-		void Praiz(NodoB* r);
-		int Oorden();
-		void Porden(int ord);
-		void crear();
 		// Buscar un producto por su expiry_date
 		Product* buscar(const string& clave);
 		void insertar(Product* producto);
 		// revisar la forma de eliminacion
 		void eliminar(const string& clave);
 
-		// Métodos para transacaciones y rollback
-		void hacerBackup();
-		void restaurarBackup();
-		void limpiarBackup();
-
 		bool buscarNodo(NodoB* actual, Product* producto, int& k);
 		bool empujar(NodoB* actual, Product* producto, Product*& productoMediana, NodoB*& nuevo);
-		void listarCreciente();
+		void insertarNoLleno(NodoB* nodo, Product* producto);
+		void dividirHijo(NodoB* padre, int indiceHijo);
+		
+		// Generacion de DOT para visualizacion
+		bool generarDot(const string& filepath);
 
 	private:
+	// Métodos auxiliares para generar DOT
+		void asignarIdsRecursivo(NodoB* nodo, int& contador, std::map<NodoB*, int>& mapIds);
+		void agregarNodosAlGenerador(NodoB* nodo, DotGenerator& gen, const std::map<NodoB*, int>& mapIds, std::unordered_set<NodoB*>& visitados);
+		void agregarAristasAlGenerador(NodoB* nodo, DotGenerator& gen, const std::map<NodoB*, int>& mapIds, std::unordered_set<NodoB*>& visitados);
 		
 		// Metodos de la clase
 		Product* buscar(NodoB* actual, const string& clave, int& n);

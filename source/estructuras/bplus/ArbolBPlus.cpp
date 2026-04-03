@@ -1,5 +1,6 @@
 #include "ArbolBPlus.h"
 #include <iostream>
+#include <stdexcept>
 
 ArbolBPlus::ArbolBPlus(int m) : orden(m), raiz(nullptr), hojaInicio(nullptr) {
     crear();
@@ -13,26 +14,6 @@ ArbolBPlus::~ArbolBPlus() {
         delete hoja;
         hoja = siguiente;
     }
-}
-
-bool ArbolBPlus::arbolBPlusvacio() const {
-    return raiz == nullptr || raiz->Ocuenta() == 0;
-}
-
-PPagina ArbolBPlus::Oraiz() const {
-    return raiz;
-}
-
-int ArbolBPlus::Oorden() const {
-    return orden;
-}
-
-void ArbolBPlus::Praiz(PPagina r) {
-    raiz = r;
-}
-
-void ArbolBPlus::Porden(int ord) {
-    orden = ord;
 }
 
 void ArbolBPlus::crear() {
@@ -49,21 +30,18 @@ ListaEnlazada* ArbolBPlus::buscar(const string& categoria) {
 ListaEnlazada* ArbolBPlus::buscar(PPagina nodo, const string& categoria) {
     if (!nodo) return nullptr;
 
-    int i = 0;
-    while (i < nodo->Ocuenta() && categoria > nodo->Oclave(i)) {
-        i++;
-    }
-
-    // Verificar si encontramos la categoría
-    if (i < nodo->Ocuenta() && categoria == nodo->Oclave(i)) {
-        if (nodo->esHoja()) {
-            return nodo->Ovalor(i);
-        }
-    }
-
-    // Si es hoja y no encontramos, retornar nullptr
     if (nodo->esHoja()) {
+        for (int i = 0; i < nodo->Ocuenta(); i++) {
+            if (categoria == nodo->Oclave(i)) {
+                return nodo->Ovalor(i);
+            }
+        }
         return nullptr;
+    }
+
+    int i = 0;
+    while (i < nodo->Ocuenta() && categoria >= nodo->Oclave(i)) {
+        i++;
     }
 
     // Si no es hoja, descer a la rama apropiada
@@ -73,22 +51,25 @@ ListaEnlazada* ArbolBPlus::buscar(PPagina nodo, const string& categoria) {
 void ArbolBPlus::insertar(Product* producto) {
     if (!raiz) crear();
 
-    string categoria = producto->getCategory();
+    if (producto == nullptr) {
+        throw runtime_error("producto nulo");
+    }
 
-    // Si la raíz está llena, dividir
     if (raiz->nodoLLeno()) {
-        PPagina nuevoNodo = new NodoBPlus(orden, false);
-        nuevoNodo->Prama(0, raiz);
-
-        // Dividir la raíz
-        dividirNodo(nuevoNodo, 0, raiz);
-        raiz = nuevoNodo;
+        PPagina nuevaRaiz = new NodoBPlus(orden, false);
+        nuevaRaiz->Prama(0, raiz);
+        dividirNodo(nuevaRaiz, 0, raiz);
+        raiz = nuevaRaiz;
     }
 
     insertatEnNodoNoLleno(raiz, producto);
 }
 
 void ArbolBPlus::insertatEnNodoNoLleno(PPagina nodo, Product* producto) {
+    if (nodo == nullptr || producto == nullptr) {
+        return;
+    }
+
     string categoria = producto->getCategory();
     int i = nodo->Ocuenta() - 1;
 
@@ -121,7 +102,7 @@ void ArbolBPlus::insertatEnNodoNoLleno(PPagina nodo, Product* producto) {
         PPagina hijo = nodo->Orama(i);
         if (hijo && hijo->nodoLLeno()) {
             dividirNodo(nodo, i, hijo);
-            if (categoria > nodo->Oclave(i)) {
+            if (categoria >= nodo->Oclave(i)) {
                 i++;
             }
         }
@@ -131,47 +112,67 @@ void ArbolBPlus::insertatEnNodoNoLleno(PPagina nodo, Product* producto) {
 }
 
 void ArbolBPlus::dividirNodo(PPagina nodoPadre, int indice, PPagina nodoLleno) {
-    int t = (orden + 1) / 2;
-    PPagina nodoNuevo = new NodoBPlus(orden, nodoLleno->esHoja());
-    
-    const int MITAD = (orden - 1) / 2;
-
-    // Copiar la segunda mitad de claves a nodoNuevo
-    for (int i = 0; i < MITAD; i++) {
-        nodoNuevo->Pclave(i, nodoLleno->Oclave(i + MITAD + 1));
-        
-        if (nodoLleno->esHoja()) {
-            nodoNuevo->Pvalor(i, nodoLleno->Ovalor(i + MITAD + 1));
-        }
+    if (nodoPadre == nullptr || nodoLleno == nullptr) {
+        return;
     }
 
-    // Si no es hoja, copiar ramas
-    if (!nodoLleno->esHoja()) {
-        for (int i = 0; i <= MITAD; i++) {
-            nodoNuevo->Prama(i, nodoLleno->Orama(i + MITAD + 1));
+    bool esHoja = nodoLleno->esHoja();
+    int totalClaves = nodoLleno->Ocuenta();
+    int mitad = totalClaves / 2;
+
+    PPagina nodoNuevo = new NodoBPlus(orden, esHoja);
+
+    if (esHoja) {
+        // Leaf split: left keeps the first half, right keeps the second half.
+        int nuevaCuenta = totalClaves - mitad;
+        for (int i = 0; i < nuevaCuenta; i++) {
+            nodoNuevo->Pclave(i, nodoLleno->Oclave(mitad + i));
+            nodoNuevo->Pvalor(i, nodoLleno->Ovalor(mitad + i));
         }
-    } else {
-        // Enlazar hojas
+        nodoNuevo->Pcuenta(nuevaCuenta);
+        nodoLleno->Pcuenta(mitad);
+
         nodoNuevo->PramaSiguiente(nodoLleno->OramaSiguiente());
         nodoLleno->PramaSiguiente(nodoNuevo);
+    } else {
+        // Internal split: promote the middle separator, move the right side to the new node.
+        tipoClave separador = nodoLleno->Oclave(mitad);
+        int nuevaCuenta = totalClaves - mitad - 1;
+
+        for (int i = 0; i < nuevaCuenta; i++) {
+            nodoNuevo->Pclave(i, nodoLleno->Oclave(mitad + 1 + i));
+        }
+        for (int i = 0; i <= nuevaCuenta; i++) {
+            nodoNuevo->Prama(i, nodoLleno->Orama(mitad + 1 + i));
+        }
+
+        nodoNuevo->Pcuenta(nuevaCuenta);
+        nodoLleno->Pcuenta(mitad);
+
+        for (int i = nodoPadre->Ocuenta(); i >= indice + 1; i--) {
+            nodoPadre->Prama(i + 1, nodoPadre->Orama(i));
+        }
+        for (int i = nodoPadre->Ocuenta() - 1; i >= indice; i--) {
+            nodoPadre->Pclave(i + 1, nodoPadre->Oclave(i));
+        }
+
+        nodoPadre->Pclave(indice, separador);
+        nodoPadre->Prama(indice + 1, nodoNuevo);
+        nodoPadre->Pcuenta(nodoPadre->Ocuenta() + 1);
+        return;
     }
 
-    nodoNuevo->Pcuenta(MITAD);
-    nodoLleno->Pcuenta(MITAD);
+    tipoClave separador = nodoNuevo->Oclave(0);
 
-    // Desplazar ramas en el padre
-    for (int i = nodoPadre->Ocuenta(); i > indice; i--) {
+    for (int i = nodoPadre->Ocuenta(); i >= indice + 1; i--) {
         nodoPadre->Prama(i + 1, nodoPadre->Orama(i));
     }
-
-    nodoPadre->Prama(indice + 1, nodoNuevo);
-
-    // Desplazar claves en el padre
     for (int i = nodoPadre->Ocuenta() - 1; i >= indice; i--) {
         nodoPadre->Pclave(i + 1, nodoPadre->Oclave(i));
     }
 
-    nodoPadre->Pclave(indice, nodoLleno->Oclave(MITAD));
+    nodoPadre->Pclave(indice, separador);
+    nodoPadre->Prama(indice + 1, nodoNuevo);
     nodoPadre->Pcuenta(nodoPadre->Ocuenta() + 1);
 }
 
@@ -358,63 +359,6 @@ void ArbolBPlus::fusionarNodos(PPagina nodo, int pos) {
     delete hermano;
 }
 
-int ArbolBPlus::buscarIndice(PPagina nodo, const string& categoria) const {
-    int i = 0;
-    while (i < nodo->Ocuenta() && categoria > nodo->Oclave(i)) {
-        i++;
-    }
-    return i;
-}
-
-void ArbolBPlus::mostrarArbol() {
-    if (!raiz) {
-        cout << "El árbol B+ está vacío." << endl;
-        return;
-    }
-    cout << "Estructura del Árbol B+:" << endl;
-    mostrarArbol(raiz, 0);
-}
-
-void ArbolBPlus::mostrarArbol(PPagina nodo, int profundidad) {
-    if (!nodo) return;
-
-    for (int i = 0; i < profundidad; i++) {
-        cout << "  ";
-    }
-
-    cout << "[";
-    for (int i = 0; i < nodo->Ocuenta(); i++) {
-        cout << nodo->Oclave(i);
-        if (i < nodo->Ocuenta() - 1) cout << ", ";
-    }
-    cout << "]" << endl;
-
-    if (!nodo->esHoja()) {
-        for (int i = 0; i <= nodo->Ocuenta(); i++) {
-            mostrarArbol(nodo->Orama(i), profundidad + 1);
-        }
-    }
-}
-
-void ArbolBPlus::listarPorCategoria() {
-    if (!hojaInicio) {
-        cout << "No hay datos para mostrar." << endl;
-        return;
-    }
-
-    PPagina hoja = hojaInicio;
-    while (hoja) {
-        for (int i = 0; i < hoja->Ocuenta(); i++) {
-            cout << "Categoría: " << hoja->Oclave(i) << endl;
-            if (hoja->Ovalor(i)) {
-                // Aquí podrías iterar los productos en la lista
-                cout << "  Productos: " << hoja->Ovalor(i)->getSize() << endl;
-            }
-        }
-        hoja = hoja->OramaSiguiente();
-    }
-}
-
 void ArbolBPlus::listarCategoria(const string& categoria) {
     ListaEnlazada* productos = buscar(categoria);
     if (productos) {
@@ -426,5 +370,120 @@ void ArbolBPlus::listarCategoria(const string& categoria) {
 }
 
 // =============== MÉTODOS DE GENERACIÓN DOT ===============
+
+bool ArbolBPlus::generarDot(const string& filepath) {
+    try {
+        DotGenerator gen("arbol_bplus", "Arbol B+ de Categorias (Orden " + to_string(orden) + ")");
+
+        if (raiz == nullptr) {
+            gen.addNode("empty", "Arbol Vacio", "ellipse", "lightgray");
+        } else {
+            int contador = 0;
+            std::map<PPagina, int> mapIds;
+            asignarIdsRecursivo(raiz, contador, mapIds);
+
+            std::unordered_set<PPagina> visitadosNodos;
+            agregarNodosAlGenerador(raiz, gen, mapIds, visitadosNodos);
+
+            std::unordered_set<PPagina> visitadosAristas;
+            agregarAristasAlGenerador(raiz, gen, mapIds, visitadosAristas);
+        }
+
+        return gen.saveToDot(filepath);
+    } catch (const exception& e) {
+        cerr << "Error al generar DOT del Arbol B+: " << e.what() << endl;
+        return false;
+    }
+}
+
+void ArbolBPlus::asignarIdsRecursivo(PPagina nodo, int& contador, std::map<PPagina, int>& mapIds) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    contador++;
+    mapIds[nodo] = contador;
+
+    if (!nodo->esHoja()) {
+        for (int i = 0; i <= nodo->Ocuenta(); i++) {
+            if (nodo->Orama(i) != nullptr) {
+                asignarIdsRecursivo(nodo->Orama(i), contador, mapIds);
+            }
+        }
+    }
+}
+
+void ArbolBPlus::agregarNodosAlGenerador(PPagina nodo, DotGenerator& gen, const std::map<PPagina, int>& mapIds, std::unordered_set<PPagina>& visitados) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    if (visitados.count(nodo) > 0) {
+        return;
+    }
+    visitados.insert(nodo);
+
+    int nodeId = mapIds.at(nodo);
+    string id = "node_" + to_string(nodeId);
+
+    stringstream label;
+    label << "ID: " << nodeId << "\n";
+    label << "Tipo: " << (nodo->esHoja() ? "Hoja" : "Interno") << "\n";
+    label << "Claves: ";
+
+    for (int i = 0; i < nodo->Ocuenta(); i++) {
+        if (nodo->esHoja()) {
+            int cantidad = 0;
+            if (nodo->Ovalor(i) != nullptr) {
+                cantidad = nodo->Ovalor(i)->getSize();
+            }
+            label << nodo->Oclave(i) << "(" << cantidad << ")";
+        } else {
+            label << nodo->Oclave(i);
+        }
+        if (i < nodo->Ocuenta() - 1) {
+            label << " | ";
+        }
+    }
+
+    bool lleno = nodo->nodoLLeno();
+    string color = lleno ? "lightyellow" : "lightblue";
+    string shape = nodo->esHoja() ? "ellipse" : "box";
+
+    gen.addNode(id, label.str(), shape, color);
+
+    if (!nodo->esHoja()) {
+        for (int i = 0; i <= nodo->Ocuenta(); i++) {
+            if (nodo->Orama(i) != nullptr) {
+                agregarNodosAlGenerador(nodo->Orama(i), gen, mapIds, visitados);
+            }
+        }
+    }
+}
+
+void ArbolBPlus::agregarAristasAlGenerador(PPagina nodo, DotGenerator& gen, const std::map<PPagina, int>& mapIds, std::unordered_set<PPagina>& visitados) {
+    if (nodo == nullptr) {
+        return;
+    }
+
+    if (visitados.count(nodo) > 0) {
+        return;
+    }
+    visitados.insert(nodo);
+
+    int parentId = mapIds.at(nodo);
+    string parentStr = "node_" + to_string(parentId);
+
+    if (!nodo->esHoja()) {
+        for (int i = 0; i <= nodo->Ocuenta(); i++) {
+            if (nodo->Orama(i) != nullptr) {
+                int childId = mapIds.at(nodo->Orama(i));
+                string childStr = "node_" + to_string(childId);
+                gen.addEdge(parentStr, childStr, "r" + to_string(i));
+                agregarAristasAlGenerador(nodo->Orama(i), gen, mapIds, visitados);
+            }
+        }
+    }
+}
 
 

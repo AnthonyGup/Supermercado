@@ -3,12 +3,12 @@
 
 #include <string>
 #include <vector>
-#include "../source/pojo/Product.h"
-#include "../source/estructuras/avl/ArbolAvl.h"
-#include "../source/estructuras/b/ArbolB.h"
-#include "../source/estructuras/bplus/ArbolBPlus.h"
-#include "../source/estructuras/listas/normal/ListaEnlazada.h"
-#include "../source/estructuras/listas/ordenada/ListaOrdenada.h"
+#include "pojo/Product.h"
+#include "estructuras/avl/ArbolAvl.h"
+#include "estructuras/b/ArbolB.h"
+#include "estructuras/bplus/ArbolBPlus.h"
+#include "estructuras/listas/normal/ListaEnlazada.h"
+#include "estructuras/listas/ordenada/ListaOrdenada.h"
 
 class Frontend {
 private:
@@ -59,12 +59,22 @@ private:
     void searchProduct();
     
     /**
-     * Opcion 5: Exportar Arbol AVL a .DOT
+     * Opcion 5: Mostrar Listas
      */
-    void exportAVLToDot();
+    void showListsMenu();
     
     /**
-     * Opcion 6: Salir
+     * Opcion 6: Exportar Arboles a .DOT
+     */
+    void exportTreesMenu();
+    
+    /**
+        * Opcion 7: Medir latencias de busqueda
+        */
+        void measureQueryLatencies();
+    
+        /**
+        * Opcion 8: Salir
      */
     void exitApp();
     

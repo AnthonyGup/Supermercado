@@ -295,7 +295,7 @@ Product* ArbolAvl::obtenerProducto(const string& nombre) const {
 
 bool ArbolAvl::generarDot(const string& filepath) {
     try {
-        DotGenerator gen("arbol_avl", "Árbol AVL de Productos (por Nombre)");
+        DotGenerator gen("arbol_avl", "Arbol AVL de Productos (Orden 2, por Nombre)");
         
         if (raiz == nullptr) {
             gen.addNode("empty", "Árbol Vacío", "ellipse", "lightgray");

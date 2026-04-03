@@ -81,9 +81,9 @@ CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_vector.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_bvector.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\vector.tcc \
- c:\users\antho\documents\visualprojects\supermercado\source\pojo\product.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\avl\arbolavl.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\avl\NodoAvl.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/ArbolAvl.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/avl/NodoAvl.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios \
@@ -107,7 +107,6 @@ CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\ostream.tcc \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\istream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\istream.tcc \
- C:/Users/antho/Documents/VisualProjects/Supermercado/source/pojo/Product.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/DotGenerator.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\sstream \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\sstream.tcc \
@@ -139,22 +138,26 @@ CMakeFiles/supermercado.dir/source/frontend/Frontend.cpp.obj: \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_tree.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_map.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multimap.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\b\arbolb.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\b\NodoB.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\bplus\arbolbplus.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\bplus\NodoBPlus.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/ArbolB.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/b/NodoB.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\unordered_set \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hashtable.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\hashtable_policy.h \
+ c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\unordered_set.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/ArbolBPlus.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/bplus/NodoBPlus.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h \
  C:/Users/antho/Documents/VisualProjects/Supermercado/source/excepciones/ProductoNoEncontradoException.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\normal\listaenlazada.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\ordenada\listaordenada.h \
- c:\users\antho\documents\visualprojects\supermercado\source\helpers\csvloader.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/normal/ListaEnlazada.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/ordenada/ListaOrdenada.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/CSVLoader.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\set \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_set.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_multiset.h \
  c:\users\antho\documents\visualprojects\supermercado\source\pojo\product.h \
- c:\users\antho\documents\visualprojects\supermercado\source\helpers\stringhelper.h \
- c:\users\antho\documents\visualprojects\supermercado\source\estructuras\listas\nodo\nodolist.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/helpers/StringHelper.h \
+ C:/Users/antho/Documents/VisualProjects/Supermercado/source/estructuras/listas/Nodo/NodoList.h \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iomanip \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\locale \
  c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\locale_facets_nonio.h \
